@@ -1,0 +1,36 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+p{
+  text-align: center;
+  font-size: larger;
+  font-style: italic;
+  font: bold;
+}
+table {
+  border: medium solid #6495ed;
+  border-collapse: collapse;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+td {
+
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #6495ed;
+  width: 50%;
+}
+
+th {
+  border: 2px solid #6495ed;
+  width: 50%;
+  background-color: ghostwhite;
+  padding: 20px;
+  text-align: center;
+
+}
+
+
+
