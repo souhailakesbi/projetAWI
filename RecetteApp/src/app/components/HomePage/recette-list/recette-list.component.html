@@ -1,25 +1,81 @@
-<img src="../logo/logo.png">
-<p> ICI ON MET UN MENU </p>
-<table>
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Intité</th>
-    <th>Nombre de couverts </th>
-    <th>Responsable </th>
-    <th>Actions</th>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<div class="container">
 
-  </tr>
-  </thead>
-  <tr>
-    <td>1</td>
-    <td>Tarte au citron</td>
-    <td>2</td>
-    <td>Chef thomas</td>
-    <td> <button> Voir details</button> <button> Supprimer </button> <button> Voir etiquette </button></td>
-  </tr>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
 
-</table>
-<div>  <input type="button" href="http:/creer-fiche/creer-fiche.component.html" value="Ajouter recette">  </div>
-
+              <form class="form-horizontal pull-right">
+                <div class="form-group">
+                  <label>Nombre de recettes: </label>
+                  <select class="form-control">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Action</th>
+              <th>Id</th>
+              <th>Intitulé</th>
+              <th>Nombre de couverts</th>
+              <th>Catégorie</th>
+              <th>Responsable</th>
+              <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <ul class="action-list">
+                  <li><a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></li>
+                  <li><a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a></li>
+                </ul>
+              </td>
+              <td>{{recipeId}}</td>
+              <td>{{recipeName}}</td>
+              <td>{{recipeNbCouverts}}</td>
+              <td>{{recipeCategorie}}</td>
+              <td>{{recipeResponsable}}</td>
+              <td><a href="#" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-search"></i></a></td>
+            </tr>
+            <tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 col-xs-6">
+              <li routerLinkActive="active"><a routerLink="/ListeRecttes/AjouterRecette" class="btn btn-sm btn-light pull-left"><i class="glyphicon glyphicon-plus"></i>Ajouter</a>
+              <ul class="pagination hidden-xs pull-right">
+                <li><a href="#">«</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+              <ul class="pagination visible-xs pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
