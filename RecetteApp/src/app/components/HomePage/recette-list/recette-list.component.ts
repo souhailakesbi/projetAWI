@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recette-list.component.css']
 })
 export class RecetteListComponent implements OnInit {
+  recipeId: number = 1;
+  recipeName:String ='Tarte au citron';
+  recipeResponsable:String ='Thomas';
+  recipeNbCouverts:number =2;
+  recipeCategorie:String = 'Dessert';
 
   constructor() { }
 

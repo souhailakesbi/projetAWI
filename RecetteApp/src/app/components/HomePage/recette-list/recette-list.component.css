@@ -1,36 +1,105 @@
-body{
-  font-family: Arial, Helvetica, sans-serif;
+.panel{
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  border: none;
+  box-shadow: 0 0 10px rgba(64, 223, 238, 0.3);
 }
-p{
-  text-align: center;
-  font-size: larger;
-  font-style: italic;
-  font: bold;
+.panel .panel-heading{
+  background: rgba(27, 77, 201, 0.3);
+  padding: 15px;
+  border-radius: 0;
 }
-table {
-  border: medium solid #6495ed;
-  border-collapse: collapse;
-  width: 50%;
-  text-align: center;
-  margin: auto;
+.panel .panel-heading .btn{
+  color: #fff;
+  background-color: rgba(15, 198, 215, 0.3);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
 }
-
-td {
-
-  padding: 20px;
-  text-align: center;
-  border: 2px solid #6495ed;
-  width: 50%;
+.panel .panel-heading .btn:hover{ box-shadow: 0 0 10px rgba(27, 77, 201, 0.3); }
+.panel .panel-heading .form-horizontal .form-group{ margin: 0; }
+.panel .panel-heading .form-horizontal label{
+  color: #fff;
+  margin-right: 10px;
 }
-
-th {
-  border: 2px solid #6495ed;
-  width: 50%;
-  background-color: ghostwhite;
-  padding: 20px;
-  text-align: center;
-
+.panel .panel-heading .form-horizontal .form-control{
+  display: inline-block;
+  width: 80px;
+  border: none;
+  border-radius: 0;
 }
-
-
+.panel .panel-heading .form-horizontal .form-control:focus{
+  box-shadow: none;
+  border: none;
+}
+.panel .panel-body{
+  padding: 0;
+  border-radius: 0;
+}
+.panel .panel-body .table thead tr th{
+  color: #fff;
+  background: rgba(27, 77, 201, 0.3);
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px;
+  border-bottom: none;
+}
+.panel .panel-body .table thead tr th:nth-of-type(1){ width: 120px; }
+.panel .panel-body .table thead tr th:nth-of-type(3){ width: 50%; }
+.panel .panel-body .table tbody tr td{
+  color: rgba(27, 77, 201, 0.3);
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px;
+  vertical-align: middle;
+  border-color: #e7e7e7;
+}
+.panel .panel-body .table tbody tr:nth-child(odd) td{ background: #f5f5f5; }
+.panel .panel-body .table tbody .action-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.panel .panel-body .table tbody .action-list li{ display: inline-block; }
+.panel .panel-body .table tbody .action-list li a{
+  color: #fff;
+  font-size: 13px;
+  line-height: 28px;
+  height: 28px;
+  width: 33px;
+  padding: 0;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-body .table tbody .action-list li a:hover{ box-shadow: 0 0 5px #ddd; }
+.panel .panel-footer{
+  color: #fff;
+  background: rgba(27, 77, 201, 0.3);
+  font-size: 16px;
+  line-height: 33px;
+  padding: 25px 15px;
+  border-radius: 0;
+}
+.pagination{ margin: 0; }
+.pagination li a{
+  color: #fff;
+  background-color: rgba(64, 223, 238, 0.3);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 2px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a{
+  color: #fff;
+  background-color: rgba(15, 198, 215, 0.3);
+  box-shadow: 0 0 5px rgba(15, 198, 215, 0.3);
+}
 
