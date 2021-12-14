@@ -1,0 +1,46 @@
+
+<br>
+<div class="container"> <div class=" text-center mt-5 ">
+  <h1>Ajouter un Chef </h1>
+</div>
+
+  <div class="row ">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form id="contact-form" role="form">
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group"> <label for="name">Nom </label> <input type="text" id="name" name="user_name" class="form-control"placeholder="Intitulé" required="required" data-error="Name is required."> </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group"> <label for="matDressage">Prénom</label> <input id="matDressage" type="text" name="materielDressage" class="form-control" > </div>
+                  </div>
+                  <div class="col-md-6">
+
+                    <div div class="form-group">
+                      <label>Role</label>
+                      <select class="form-select" aria-label="Default select example" class="form-control">
+                        <option value="" selected disabled>--Séléctionner une catégorie--</option>
+                        <option value="1" >Chef </option>
+                        <option value="2">Assisstant</option>
+                        <option value="3">Stagiaire</option>
+                      </select> </div>
+                  </div>
+                </div>
+<br>
+                <div class="row">
+                  <div class=" text-center  "><button class="btn btn-success" type="submit" routerLink="/ListeRecettes/AjouterRecette/AjouterEtape">Ajouter une étape</button></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+  </div>
+</div>
+
