@@ -1,0 +1,32 @@
+#global {
+  width: 900px;
+}
+
+
+#Ingredient {
+
+  width: 250px;
+  float: left;
+
+}
+
+#MatDressage {
+
+  width: 450px;
+  float: left;
+
+}
+
+#contenu {
+
+  margin-left: 450px;
+  background-color: white;
+
+}
+
+#MatSpecif {
+
+  margin-right: 450px;
+  background-color: white;
+
+}
