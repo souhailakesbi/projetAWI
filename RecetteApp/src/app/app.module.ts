@@ -1,31 +1,54 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { RecetteListComponent } from './components/HomePage/recette-list/recette-list.component';
-import { CreerFicheComponent } from './components/HomePage/creer-fiche/creer-fiche.component';
-import { CreerEtapeComponent } from './components/HomePage/creer-etape/creer-etape.component';
-import { MenuComponent } from './components/HomePage/menu/menu.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {environment} from "../environments/environment";
+import {provideFirestore, getFirestore} from "@angular/fire/firestore";
+import {AppComponent} from './app.component';
+import {RecetteListComponent} from './components/HomePage/recette-list/recette-list.component';
+import {CreerFicheComponent} from './components/HomePage/creer-fiche/creer-fiche.component';
+import {CreerEtapeComponent} from './components/HomePage/creer-etape/creer-etape.component';
+import {MenuComponent} from './components/HomePage/menu/menu.component';
 import {RouterModule, Routes} from "@angular/router";
-import { LoginComponent } from './components/Login/login.component';
-import { IngredientsComponent } from './components/HomePage/ingredients/ingredients.component';
-import { StockComponent } from './components/HomePage/stock/stock.component';
-import { ResponsablesComponent } from './components/HomePage/responsables/responsables.component';
-import { AjouterChefComponent } from './components/HomePage/ajouter-chef/ajouter-chef.component';
-import { AjouterIngredientComponent } from './components/HomePage/ajouter-ingredient/ajouter-ingredient.component';
-import { AjoutStockComponent } from './components/HomePage/ajout-stock/ajout-stock.component';
-const AppRoutes : Routes = [
-  {path: 'ListeRecettes', component:RecetteListComponent},
+import {LoginComponent} from './components/Login/login.component';
+import {IngredientsComponent} from './components/HomePage/ingredients/ingredients.component';
+import {StockComponent} from './components/HomePage/stock/stock.component';
+import {ResponsablesComponent} from './components/HomePage/responsables/responsables.component';
+import {AjouterChefComponent} from './components/HomePage/ajouter-chef/ajouter-chef.component';
+import {AjouterIngredientComponent} from './components/HomePage/ajouter-ingredient/ajouter-ingredient.component';
+import {AjoutStockComponent} from './components/HomePage/ajout-stock/ajout-stock.component';
+import {DetailsFicheComponent} from './components/HomePage/details-fiche/details-fiche.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {ModificationFicheComponent} from './components/HomePage/modification-fiche/modification-fiche.component';
+import {FichePrixComponent} from './components/HomePage/fiche-prix/fiche-prix.component';
+import {FicheEtiquetteComponent} from './components/HomePage/fiche-etiquette/fiche-etiquette.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {provideAuth, getAuth} from '@angular/fire/auth';
+import {provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService} from '@angular/fire/analytics';
+import {provideDatabase, getDatabase} from '@angular/fire/database';
+import {provideFunctions, getFunctions} from '@angular/fire/functions';
+import {provideMessaging, getMessaging} from '@angular/fire/messaging';
+import {providePerformance, getPerformance} from '@angular/fire/performance';
+import {provideRemoteConfig, getRemoteConfig} from '@angular/fire/remote-config';
+import {provideStorage, getStorage} from '@angular/fire/storage';
+import {AuthentificationService} from "./services/authentification.service";
 
-  {path: 'ListeRecettes/AjouterRecette', component:CreerFicheComponent},
-  {path: 'ListeRecettes/AjouterRecette/AjouterEtape', component:CreerEtapeComponent},
-  {path:'', component : LoginComponent},
-  {path : 'Ingredients', component : IngredientsComponent},
-  {path: 'Stock', component : StockComponent},
+
+const AppRoutes: Routes = [
+  {path: 'ListeRecettes', component: RecetteListComponent},
+  {path: 'ListeRecettes/AjouterRecette', component: CreerFicheComponent},
+  {path: 'ListeRecettes/AjouterRecette/AjouterEtape', component: CreerEtapeComponent},
+  {path: 'ListeRecettes/Fiches', component: DetailsFicheComponent},
+  {path: 'ListeRecettes/Fiches/Modification', component: ModificationFicheComponent},
+  {path: 'Fiches/couts', component: FichePrixComponent},
+  {path: 'Login', component: LoginComponent},
+  {path: 'Ingredients', component: IngredientsComponent},
+  {path: 'Stock', component: StockComponent},
+  {path: 'Etiquette', component: FicheEtiquetteComponent},
   {path: 'Responsables', component: ResponsablesComponent},
-  {path : 'AjouterChef' , component : AjouterChefComponent},
-  {path: 'Ingredients/AjouterIngredient', component : AjouterIngredientComponent},
-  {path: 'Stock/AjouterStock' , component :AjoutStockComponent }
+  {path: 'AjouterChef', component: AjouterChefComponent},
+  {path: 'Ingredients/AjouterIngredient', component: AjouterIngredientComponent},
+  {path: 'Stock/AjouterStock', component: AjoutStockComponent}
 ]
 @NgModule({
   declarations: [
@@ -40,14 +63,34 @@ const AppRoutes : Routes = [
     ResponsablesComponent,
     AjouterChefComponent,
     AjouterIngredientComponent,
-    AjoutStockComponent
+    AjoutStockComponent,
+    DetailsFicheComponent,
+    ModificationFicheComponent,
+    FichePrixComponent,
+    FicheEtiquetteComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRoutes)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    RouterModule.forRoot(AppRoutes),
+    ReactiveFormsModule,
+    provideAuth(() => getAuth()),
+    provideAnalytics(() => getAnalytics()),
+    provideDatabase(() => getDatabase()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    providePerformance(() => getPerformance()),
+    provideRemoteConfig(() => getRemoteConfig()),
+    provideStorage(() => getStorage()),
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent, RecetteListComponent,CreerFicheComponent, IngredientsComponent, StockComponent, AjouterChefComponent, AjouterIngredientComponent, AjoutStockComponent
+  providers: [
+    ScreenTrackingService, UserTrackingService, AuthentificationService
+  ],
+  bootstrap: [AppComponent, RecetteListComponent, CreerFicheComponent, IngredientsComponent, StockComponent, AjouterChefComponent, AjouterIngredientComponent, AjoutStockComponent
   ]
 })
 
