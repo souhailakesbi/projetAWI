@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "recetteapp-6b342": {
+      "hosting": {
+        "RecetteApp": [
+          "recetteapp-6b342"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "recetteapp-6b342"
+  }
+}
