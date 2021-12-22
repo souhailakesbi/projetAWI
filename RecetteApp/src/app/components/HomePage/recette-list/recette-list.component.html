@@ -1,80 +1,94 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<menu>
-  <button routerLink="/Login" type="submit">LogOut</button>
-</menu>
-<div class="container">
-  <div class="row">
-    <div class="col-md-offset-1 col-md-10">
-      <div class="panel">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-sm-12 col-xs-12">
 
-              <form class="form-horizontal pull-right">
-                <div class="form-group">
-                  <label>Nombre de recettes: </label>
-                  <select class="form-control">
-                    <option>5</option>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                  </select>
-                </div>
-              </form>
-            </div>
+
+<div id="mainCoantiner">
+  <!--dust particel-->
+  <div class="margin-body">
+
+    <div>
+      <div class="starsec"></div>
+      <div class="starthird"></div>
+      <div class="starfourth"></div>
+      <div class="starfifth"></div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="wpb_text_column wpb_content_element ">
+          <div class="wpb_wrapper">
+            <div class="title-h1 text-center"><span><span class="light"> </span> </span></div>
           </div>
         </div>
-        <div class="panel-body table-responsive">
-          <table class="table">
-            <thead>
-            <tr>
-              <th>Action</th>
-              <th>Id</th>
-              <th>Intitulé</th>
-              <th>Nombre de couverts</th>
-              <th>Catégorie</th>
-              <th>Responsable</th>
-              <th>View</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <ul class="action-list">
-                  <li><a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></li>
-                  <li><a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a></li>
-                </ul>
-              </td>
-              <td>{{recipeId}}</td>
-              <td>{{recipeName}}</td>
-              <td>{{recipeNbCouverts}}</td>
-              <td>{{recipeCategorie}}</td>
-              <td>{{recipeResponsable}}</td>
-              <td><a class="btn btn-sm btn-success" href="/ListeRecettes/Fiches"><i
-                class="glyphicon glyphicon-search"></i></a></td>
-            </tr>
-            <tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="panel-footer">
-          <div class="row">
-            <div class="col-sm-6 col-xs-6">
-              <li routerLinkActive="active"><a routerLink="/ListeRecettes/AjouterRecette" class="btn btn-sm btn-light pull-left">Ajouter</a>
-              <ul class="pagination hidden-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 col-md-3 pricing-column-wrapper">
+        <div class="pricing-column">
+          <div class="pricing-price-row">
+            <div class="pricing-price-wrapper">
+              <div class="pricing-price">
+                <div class="pricing-cost"></div>
+                <div class="time"></div>
+              </div>
             </div>
+          </div>
+          <div class="pricing-row-title">
+            <div class="pricing_row_title">Tarte au citron</div>
+          </div>
+          <figure class="pricing-row">Responsable : Ouissem Redjemi</figure>
+          <figure class="pricing-row"><span>35 min </span></figure>
+          <figure class="pricing-row ">Coût : 5 €</figure>
+          <figure class="pricing-row ">Nombre de couverts : 5 </figure>
+
+
+          <div class="pricing-footer">
+            <div class="gem-button-container gem-button-position-center"><a href="#" class="gem-button gem-green"> Selectionner</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3 pricing-column-wrapper">
+        <div class="pricing-column">
+          <div class="pricing-price-row">
+            <div class="pricing-price-wrapper">
+              <div class="pricing-price">
+                <div class="pricing-cost"></div>
+                <div class="time"></div>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-row-title">
+            <div class="pricing_row_title">Couscous</div>
+          </div>
+          <figure class="pricing-row">Responsable : Kesbi Souhaila</figure>
+          <figure class="pricing-row "> 50 min </figure>
+          <figure class="pricing-row ">Coût : 10€ </figure>
+          <figure class="pricing-row ">Nombre de couverts : 10 </figure>
+          <div class="pricing-footer">
+            <div class="gem-button-container gem-button-position-center"><a class="gem-button gem-purpel">Selectionner</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3 pricing-column-wrapper">
+        <div class="pricing-column">
+          <div class="pricing-price-row">
+            <div class="pricing-price-wrapper">
+              <div class="pricing-price">
+                <div class="pricing-cost"></div>
+                <div class="time"></div>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-row-title">
+            <div class="pricing_row_title">Mojito</div>
+          </div>
+          <figure class="pricing-row">Responsable : AHLAL Zahra</figure>
+          <figure class="pricing-row"><span> 100 min</span></figure>
+          <figure class="pricing-row"><span>Coût : 3€ </span></figure>
+          <figure class="pricing-row"> Nombre de couverts : 2 </figure>
+          <div class="pricing-footer">
+            <div class="gem-button-container gem-button-position-center">
+              <a class="gem-button gem-orange">Selectionner</a></div>
           </div>
         </div>
       </div>
