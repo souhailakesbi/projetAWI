@@ -42,6 +42,7 @@ const AppRoutes: Routes = [
   {path: 'ListeRecettes/Fiches/Modification', component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'Login', component: LoginComponent},
+  {path: '', redirectTo: '/Login', pathMatch: 'full'},
   {path: 'Ingredients', component: IngredientsComponent},
   {path: 'Stock', component: StockComponent},
   {path: 'Etiquette', component: FicheEtiquetteComponent},

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthentificationService} from "../../../services/authentification.service";
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
+
   }
+
+  buttonLogoutForm() {
+
+    try {
+      this.authentificationService.logOut();
+      console.log("Déconnexion réussi ");
+    }catch (error){
+      console.log("Déconnexion échoué ");
+    }
+
+  }
+
+
 
 }
