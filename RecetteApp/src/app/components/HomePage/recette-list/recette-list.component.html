@@ -10,7 +10,7 @@
       <div class="starfourth"></div>
       <div class="starfifth"></div>
     </div>
-    
+
 
     <div class="row">
       <div class="col-sm-12 col-md-12">
@@ -22,7 +22,9 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngFor="let fiche of fiches; let i = index"
+         [class.active]="i ===currentIndex"
+         (click)="setActiveFiche(fiche,i)">
       <div class="col-sm-3 col-md-3 pricing-column-wrapper">
         <div class="pricing-column">
           <div class="pricing-price-row">
@@ -34,16 +36,16 @@
             </div>
           </div>
           <div class="pricing-row-title">
-            <div class="pricing_row_title">Tarte au citron</div>
+            <div class="pricing_row_title">{{fiche.title}}</div>
           </div>
-          <figure class="pricing-row">Responsable : Ouissem Redjemi</figure>
+          <figure class="pricing-row">Responsable : {{fiche.responsable}}</figure>
           <figure class="pricing-row"><span>35 min </span></figure>
           <figure class="pricing-row ">Coût : 5 €</figure>
-          <figure class="pricing-row ">Nombre de couverts : 5 </figure>
+          <figure class="pricing-row ">Nombre de couverts : {{fiche.nbCouverts}}</figure>
 
 
           <div class="pricing-footer">
-            <div class="gem-button-container gem-button-position-center"><a href="#" class="gem-button gem-green"> Selectionner</a></div>
+            <div class="gem-button-container gem-button-position-center"><a href="" class="gem-button gem-green"> Selectionner</a></div>
           </div>
         </div>
       </div>

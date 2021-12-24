@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import Fiche from "../../../models/fiche";
+import Fiche from "../../../models/ficheTechnique/fiche";
 import {AjoutFicheService} from "../../../services/ajout-fiche.service";
 import {error} from "@angular/compiler/src/util";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-creer-fiche',
@@ -9,35 +11,39 @@ import {error} from "@angular/compiler/src/util";
   styleUrls: ['./creer-fiche.component.css']
 })
 export class CreerFicheComponent implements OnInit {
-
-  fiche: Fiche = new Fiche();
-  submitted = false;
-  message : string = "";
+   public ficheForm! : FormGroup;
   constructor(
-    private ficheService: AjoutFicheService
-  ) { }
+  public ficheService : AjoutFicheService,
+  public formBuilder : FormBuilder,
+  public router: Router
+  ) {
+    this.ficheForm = this.formBuilder.group({
+      title: [''],
+      materielDressage: [''],
+      materielSpecifique: [''],
+      nbCouverts: null,
+      responsable:[''],
+    });
+  }
 
   ngOnInit(): void {
   }
-  saveFiche(){
+
+  onSubmit(){
+    this.ficheService.create(this.ficheForm.value);
+    this.router.navigate(['AjouterEtape']);
+  }
+
+  /*saveFiche(){
     this.ficheService.create(this.fiche).then(
-        (res: any) =>{
-        this.fiche.title = "";
-        this.fiche.materielDressage = "";
-        this.fiche.responsable = "";
-        this.fiche.nbCouverts = 2;
-        this.fiche.materielSpecifique = "";
+        () =>{
+        console.log('Created sans étapes');
         this.submitted = true;
-        console.log(res);
-        this.message= "Fiche sans étapes créée"
-      }
-    ).catch((error: any) => {
-        console.log(error);
       }
     );
   }
   newFiche():void{
     this.submitted=false;
     this.fiche = new Fiche();
-  }
+  }*/
 }

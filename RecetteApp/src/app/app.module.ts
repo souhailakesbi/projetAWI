@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+
 import {environment} from "../environments/environment";
-import {provideFirestore, getFirestore} from "@angular/fire/firestore";
+
 import {AppComponent} from './app.component';
 import {RecetteListComponent} from './components/HomePage/recette-list/recette-list.component';
 import {CreerFicheComponent} from './components/HomePage/creer-fiche/creer-fiche.component';
@@ -23,23 +23,16 @@ import {ModificationFicheComponent} from './components/HomePage/modification-fic
 import {FichePrixComponent} from './components/HomePage/fiche-prix/fiche-prix.component';
 import {FicheEtiquetteComponent} from './components/HomePage/fiche-etiquette/fiche-etiquette.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {provideAuth, getAuth} from '@angular/fire/auth';
-import {provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService} from '@angular/fire/analytics';
-import {provideDatabase, getDatabase} from '@angular/fire/database';
-import {provideFunctions, getFunctions} from '@angular/fire/functions';
-import {provideMessaging, getMessaging} from '@angular/fire/messaging';
-import {providePerformance, getPerformance} from '@angular/fire/performance';
-import {provideRemoteConfig, getRemoteConfig} from '@angular/fire/remote-config';
-import {provideStorage, getStorage} from '@angular/fire/storage';
 import {AuthentificationService} from "./services/authentification.service";
 
 
 const AppRoutes: Routes = [
+  {path: '', redirectTo: '/Login', pathMatch: 'full'},
   {path: 'ListeRecettes', component: RecetteListComponent},
   {path: 'AjouterRecette', component: CreerFicheComponent},
   {path: 'AjouterEtape', component: CreerEtapeComponent},
   {path: 'Fiches', component: DetailsFicheComponent},
-  {path: 'Fiches/Modification', component: ModificationFicheComponent},
+  {path: 'Modification/:id', component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Ingredients', component: IngredientsComponent},
@@ -74,22 +67,13 @@ const AppRoutes: Routes = [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
     RouterModule.forRoot(AppRoutes),
     ReactiveFormsModule,
-    provideAuth(() => getAuth()),
-    provideAnalytics(() => getAnalytics()),
-    provideDatabase(() => getDatabase()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()),
-    provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage()),
+
     FormsModule
   ],
   providers: [
-    ScreenTrackingService, UserTrackingService, AuthentificationService
+    AuthentificationService
   ],
   bootstrap: [AppComponent, RecetteListComponent, CreerFicheComponent, IngredientsComponent, StockComponent, AjouterChefComponent, AjouterIngredientComponent, AjoutStockComponent
   ]
