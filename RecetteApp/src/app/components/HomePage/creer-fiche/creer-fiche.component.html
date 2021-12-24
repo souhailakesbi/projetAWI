@@ -10,10 +10,19 @@
         <div class="card-body bg-light">
           <div class="container">
             <form id="contact-form" role="form">
-              <div class="controls">
+              <div class="controls" *ngIf="!submitted">
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group"> <label for="name">Nom de la recette * </label> <input type="text" id="name" name="user_name" class="form-control"placeholder="Intitulé" required="required" data-error="Name is required."> </div>
+                    <div class="form-group"> <label for="title">Nom de la recette * </label>
+                      <input type="text"
+                             id="title"
+                             name="title"
+                             class="form-control"
+                             placeholder="Intitulé"
+                             required
+                             [(ngModel)]="fiche.title"
+                             data-error="Name is required.">
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div div class="form-group">
@@ -23,31 +32,64 @@
                         <option value="1">Entrée</option>
                         <option value="2">Plat</option>
                         <option value="3">Dessert</option>
-                      </select> </div>
+                      </select>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group"> <label for="nbCouverts">Nombre de couverts *</label> <input id="nbCouverts" type="number" name="nbCouverts" class="form-control" placeholder="Entrer le nombre de couverts " required="required"> </div>
+                    <div class="form-group">
+                      <label for="nbCouverts">Nombre de couverts *</label>
+                      <input id="nbCouverts"
+                             type="number"
+                             name="nbCouverts"
+                             class="form-control"
+                             placeholder="Entrer le nombre de couverts "
+                             [(ngModel)]="fiche.nbCouverts"
+                             required="required">
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group"> <label for="nomResponsable">Please specify your need *</label> <select id="nomResponsable" name="nomResp" class="form-control" required="required">
+                    <div class="form-group">
+                      <label for="responsable">Please specify your need *</label>
+                      <select id="responsable"
+                              name="responsable"
+                              [(ngModel)]="fiche.responsable"
+                              class="form-control"
+                              required="required">
                       <option value="" selected disabled>--Responsable--</option>
                       <option>Ouissem</option>
                       <option>Souhaila</option>
-                    </select> </div>
+                    </select>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group"> <label for="matDressage">Matériel de Dresaage</label> <input id="matDressage" type="text" name="materielDressage" class="form-control" > </div>
+                    <div class="form-group">
+                      <label for="materielDressage">Matériel de Dressage</label>
+                      <input id="materielDressage"
+                             type="text"
+                             [(ngModel)]="fiche.materielDressage"
+                             name="materielDressage"
+                             class="form-control" >
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group"> <label for="matSpecifique">Matériel Spécifique</label> <input id="matSpecifique" type="text" name="materielSpecifique" class="form-control" > </div>
+                    <div class="form-group">
+                      <label for="materielSpecifique">Matériel Spécifique</label>
+                      <input id="materielSpecifique"
+                             type="text"
+                             [(ngModel)]="fiche.materielSpecifique"
+                             name="materielSpecifique"
+                             class="form-control" >
+                    </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12"><button class="btn btn-success" type="submit" routerLink="/ListeRecettes/AjouterRecette/AjouterEtape">Ajouter une étape</button></div>
+                  <div class="col-md-12">
+                    <button class="btn btn-success" type="submit" (click)="saveFiche()" routerLink="/AjouterEtape">Ajouter une étape</button>
+                  </div>
                 </div>
               </div>
             </form>
@@ -55,6 +97,9 @@
         </div>
       </div> <!-- /.8 -->
     </div> <!-- /.row-->
+  </div>
+  <div class="form-group" *ngIf="submitted">
+    <h4>{{message}}</h4>
   </div>
 </div>
 

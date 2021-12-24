@@ -36,10 +36,10 @@ import {AuthentificationService} from "./services/authentification.service";
 
 const AppRoutes: Routes = [
   {path: 'ListeRecettes', component: RecetteListComponent},
-  {path: 'ListeRecettes/AjouterRecette', component: CreerFicheComponent},
-  {path: 'ListeRecettes/AjouterRecette/AjouterEtape', component: CreerEtapeComponent},
-  {path: 'ListeRecettes/Fiches', component: DetailsFicheComponent},
-  {path: 'ListeRecettes/Fiches/Modification', component: ModificationFicheComponent},
+  {path: 'AjouterRecette', component: CreerFicheComponent},
+  {path: 'AjouterEtape', component: CreerEtapeComponent},
+  {path: 'Fiches', component: DetailsFicheComponent},
+  {path: 'Fiches/Modification', component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'Login', component: LoginComponent},
   {path: 'Ingredients', component: IngredientsComponent},
@@ -51,6 +51,7 @@ const AppRoutes: Routes = [
   {path: 'Stock/AjouterStock', component: AjoutStockComponent}
 ]
 @NgModule({
+  exports:[RouterModule],
   declarations: [
     AppComponent,
     RecetteListComponent,
