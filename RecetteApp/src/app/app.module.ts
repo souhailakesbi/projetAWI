@@ -57,6 +57,7 @@ const AppRoutes: Routes = [
 
 ]
 @NgModule({
+  exports:[RouterModule],
   declarations: [
     AppComponent,
     RecetteListComponent,

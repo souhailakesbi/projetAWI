@@ -21,7 +21,6 @@ export class AjouterIngredientComponent implements OnInit {
     public formBuilder : FormBuilder,
     public router : Router){
     this.ingredientForm = this.formBuilder.group({
-      code: [''],
       libelle: [''],
       unite: [''],
       prix_unitaire: [''],
@@ -34,7 +33,7 @@ export class AjouterIngredientComponent implements OnInit {
   }
 
   onSubmit(){
-    this.ingredientService.createIngredient(this.ingredient);
+    this.ingredientService.createIngredient(this.ingredientForm.value);
     this.router.navigate(['Ingredients'])
     console.log("Ajout fait ")
 

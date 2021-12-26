@@ -7,17 +7,16 @@
   <table class="table">
 
       <tr>
-        <th scope="col">Code</th>
         <th scope="col">Libelle</th>
         <th scope="col">Unite</th>
         <th scope="col">Prix Unitaire</th>
         <th scope="col">Catégorie</th>
+        <th scope="col">Actions</th>
       </tr>
 
     <tbody>
-    <tr *ngFor="let ingredient of Ingredients">
+    <tr *ngFor="let ingredient of Ingredients; let i = index">
 
-      <td>{{ingredient.code}}</td>
       <td>{{ingredient.libelle}}</td>
       <td>{{ingredient.unite}}</td>
       <td>{{ingredient.prix_unitaire}}</td>

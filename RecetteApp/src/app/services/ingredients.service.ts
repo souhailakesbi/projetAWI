@@ -8,13 +8,14 @@ import {Ingredients} from '../models/ingredients';
 export class IngredientsService {
   private dbPath = '/ingredients';
   liste_ingredients: Ingredients[] = [];// pas necessaire
-  public angularFirebase!: AngularFirestore ;
-  constructor( db: AngularFirestore) {
+  public angularFirebase: AngularFirestoreCollection<Ingredients> ;
+  constructor(private db: AngularFirestore) {
+    this.angularFirebase = db.collection(this.dbPath);
   }
 
-  getIngredientList() : AngularFirestoreCollection<Ingredients> {
-    return this.angularFirebase.collection(this.dbPath);
-    console.log("arrivé sur liste getingredient")
+  getIngredientList(){
+    return this.db.collection('ingredients').snapshotChanges();
+    console.log("arrivé sur liste getingredient");
 
   }
 
@@ -24,29 +25,30 @@ export class IngredientsService {
   }
 
   createIngredient(ingredient : Ingredients){
-    return new Promise<any>((resolve , reject) =>{
-      this.angularFirebase?.collection(this.dbPath).add(ingredient)
-        .then(response => {console.log("ouiii creation faite ")}, error=> reject(error))
+    return new Promise((resolve , reject) =>{
+      this.db.collection('ingredients').add(ingredient).then(response => {
+          console.log(response);
+        }, error=> reject(error));
       }
 
-    )
+    );
   }
 
 
   deleteIngredient(id : string){
-    return this.angularFirebase?.collection(this.dbPath).doc(id).delete();
-    console.log("Ingredient bien deleteingredients")
+    return this.db.collection('ingredients').doc(id).delete();
+    console.log("Ingredient bien deleteingredients");
   }
 
-  updateIngredient(ingredient: Ingredients, code: string | null){
-    return this.angularFirebase?.doc(ingredient.code).update(
+  updateIngredient(id: string, ingredient: Ingredients){
+    return this.db.collection('ingredients').doc(id).update(
       {
         libelle: ingredient.libelle,
         unite: ingredient.unite,
         prix_unitaire: ingredient.prix_unitaire,
         categorie: ingredient.categorie
       }
-    )
+    );
   }
 /*
   create(ingredients: Ingredients) {

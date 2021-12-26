@@ -9,25 +9,23 @@ import {Ingredients} from "../../../models/ingredients";
 })
 export class IngredientsComponent implements OnInit {
 
-  Ingredients : Ingredients[] | undefined ;
+  Ingredients! : Ingredients[];
 
 
   constructor(private ingredientService : IngredientsService) { }
   ngOnInit() {
-    this.ingredientService.getIngredientList().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
-        )
-      )
-    ).subscribe(data => {
-      this.Ingredients = data;
-      console.log('ngonint ingrecomponent');
-    })
+    this.ingredientService.getIngredientList().subscribe(res =>{
+      this.Ingredients = res.map(c => {
+        return{
+          code: c.payload.doc.id, ...c.payload.doc.data() as {}
+        } as Ingredients;
+      })
+    });
+
   }
 
   removeIngredients(ingredients : Ingredients){
-    if(confirm("are you sure to delete"+ ingredients.code)){
+    if(confirm("are you sure to delete"+ ingredients.libelle)){
       this.ingredientService.deleteIngredient(ingredients.code);
       console.log("Ingredient bien supprimé")
     }
@@ -73,8 +71,8 @@ retrieveIngredients(): void {
     this.currentIndex = index;
   }
 */
-  removeIngredient(ingredient: Ingredients) {
 
-  }
+
+
 }
 
