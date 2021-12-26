@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {environment} from "../environments/environment";
-
 import {AppComponent} from './app.component';
 import {RecetteListComponent} from './components/HomePage/recette-list/recette-list.component';
 import {CreerFicheComponent} from './components/HomePage/creer-fiche/creer-fiche.component';
@@ -23,25 +21,29 @@ import {ModificationFicheComponent} from './components/HomePage/modification-fic
 import {FichePrixComponent} from './components/HomePage/fiche-prix/fiche-prix.component';
 import {FicheEtiquetteComponent} from './components/HomePage/fiche-etiquette/fiche-etiquette.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuthentificationService} from "./services/authentification.service";
+import {AuthentificationService} from "./services/authentification/authentification.service";
+import { ListeStepComponent } from './components/HomePage/liste-step/liste-step.component';
+import {AuthGuardService} from "./services/authentification/auth-guard.service";
+import { DetailsEtapeComponent } from './components/HomePage/details-etape/details-etape.component';
 
 
 const AppRoutes: Routes = [
-  {path: '', redirectTo: '/Login', pathMatch: 'full'},
-  {path: 'ListeRecettes', component: RecetteListComponent},
-  {path: 'AjouterRecette', component: CreerFicheComponent},
-  {path: 'AjouterEtape', component: CreerEtapeComponent},
-  {path: 'Fiches', component: DetailsFicheComponent},
-  {path: 'Modification/:id', component: ModificationFicheComponent},
+  {path: '', redirectTo: 'auth/Login', pathMatch: 'full'},
+  {path: 'ListeRecettes', canActivate:[AuthGuardService], component: RecetteListComponent},
+  {path: 'AjouterRecette',canActivate:[AuthGuardService], component: CreerFicheComponent},
+  {path: 'AjouterEtape', canActivate:[AuthGuardService],component: CreerEtapeComponent},
+  {path: 'Fiches/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent},
+  {path: 'Modification/:id',canActivate:[AuthGuardService], component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
-  {path: 'Login', component: LoginComponent},
+  {path: 'auth/Login', component: LoginComponent},
   {path: 'Ingredients', component: IngredientsComponent},
   {path: 'Stock', component: StockComponent},
   {path: 'Etiquette', component: FicheEtiquetteComponent},
   {path: 'Responsables', component: ResponsablesComponent},
   {path: 'AjouterChef', component: AjouterChefComponent},
   {path: 'Ingredients/AjouterIngredient', component: AjouterIngredientComponent},
-  {path: 'Stock/AjouterStock', component: AjoutStockComponent}
+  {path: 'Stock/AjouterStock', component: AjoutStockComponent},
+  {path: 'ListeEtapes', component: ListeStepComponent}
 ]
 @NgModule({
   exports:[RouterModule],
@@ -61,7 +63,9 @@ const AppRoutes: Routes = [
     DetailsFicheComponent,
     ModificationFicheComponent,
     FichePrixComponent,
-    FicheEtiquetteComponent
+    FicheEtiquetteComponent,
+    ListeStepComponent,
+    DetailsEtapeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Fiche from "../../../models/ficheTechnique/fiche";
-import {AjoutFicheService} from "../../../services/ajout-fiche.service";
+import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -9,35 +9,21 @@ import {map} from "rxjs/operators";
   styleUrls: ['./recette-list.component.css']
 })
 export class RecetteListComponent implements OnInit {
-  fiches?: Fiche[];
-  currentFiche?: Fiche;
-  currentIndex = -1;
-  title:String ='';
-  /*recipeResponsable:String ='';
-  recipeNbCouverts:number =2;
-  recipeCategorie:String = 'Dessert';*/
-
-  constructor(
-    public ficheService : AjoutFicheService
-  ) { }
+  fiches!: Fiche[];
+  constructor(public ficheService : AjoutFicheService) { }
 
   ngOnInit(): void {
-    this.retrieveFiche();
-  }
-  retrieveFiche(): void{
-    this.ficheService.getAll().snapshotChanges().pipe(
-      map(changes =>
-      changes.map(c =>
-        ({id: c.payload.doc.id, ...c.payload.doc.data()})
-      )
-      )
-    ).subscribe(data => {
-      this.fiches = data;
+    this.ficheService.getFicheList().subscribe(res =>{
+      this.fiches = res.map(e => {
+        return{
+          id: e.payload.doc.id, ...e.payload.doc.data() as {}
+        } as Fiche;
+      })
     });
   }
-
-  setActiveFiche(fiche: Fiche, index: number):void{
-    this.currentFiche = fiche;
-    this.currentIndex = index
+  removeFiche(fiche:Fiche){
+    if(confirm("Désirez-vous supprimer cette recettes ?"+ fiche.title)){
+      this.ficheService.delete(fiche.id);
+    }
   }
 }

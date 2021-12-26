@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
-import Fiche from '../models/ficheTechnique/fiche'
+import Fiche from '../../models/ficheTechnique/fiche'
 @Injectable({
   providedIn: 'root'
 })
@@ -39,7 +39,7 @@ export class AjoutFicheService {
     });
   }
 
-  delete(id:string){
+  delete(id: string | undefined){
     return this.db.collection('fiche').doc(id).delete();
   }
 

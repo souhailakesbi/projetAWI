@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import Fiche from "../../../models/ficheTechnique/fiche";
-import {AjoutFicheService} from "../../../services/ajout-fiche.service";
-import {error} from "@angular/compiler/src/util";
+
+import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
+import {Step} from "../../../models/step/step";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {StepServiceService} from "../../../services/step/step-service.service";
+import Fiche from "../../../models/ficheTechnique/fiche";
 
 @Component({
   selector: 'app-creer-fiche',
@@ -12,10 +14,13 @@ import {Router} from "@angular/router";
 })
 export class CreerFicheComponent implements OnInit {
    public ficheForm! : FormGroup;
+  //public listeStep?: Step[];
+  public recette! : Fiche;
   constructor(
   public ficheService : AjoutFicheService,
   public formBuilder : FormBuilder,
-  public router: Router
+  public router: Router,
+  public step : StepServiceService,
   ) {
     this.ficheForm = this.formBuilder.group({
       title: [''],
@@ -31,18 +36,11 @@ export class CreerFicheComponent implements OnInit {
 
   onSubmit(){
     this.ficheService.create(this.ficheForm.value);
-    this.router.navigate(['AjouterEtape']);
+    this.router.navigate(['AjouterEtape', this.recette.id]);
+    console.log("recette",this.recette);
   }
 
-  /*saveFiche(){
-    this.ficheService.create(this.fiche).then(
-        () =>{
-        console.log('Created sans étapes');
-        this.submitted = true;
-      }
-    );
-  }
-  newFiche():void{
+  /*newFiche():void{
     this.submitted=false;
     this.fiche = new Fiche();
   }*/

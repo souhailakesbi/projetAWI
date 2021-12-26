@@ -22,9 +22,7 @@
       </div>
     </div>
 
-    <div class="row" *ngFor="let fiche of fiches; let i = index"
-         [class.active]="i ===currentIndex"
-         (click)="setActiveFiche(fiche,i)">
+    <div class="row" *ngFor="let fiche of fiches; let i = index">
       <div class="col-sm-3 col-md-3 pricing-column-wrapper">
         <div class="pricing-column">
           <div class="pricing-price-row">
@@ -39,7 +37,7 @@
             <div class="pricing_row_title">{{fiche.title}}</div>
           </div>
           <figure class="pricing-row">Responsable : {{fiche.responsable}}</figure>
-          <figure class="pricing-row"><span>35 min </span></figure>
+          <figure class="pricing-row"><span>35 min </span></figure> <!--Un attribut calculé (je pense qu'on somme les durées de chaque étape)-->
           <figure class="pricing-row ">Coût : 5 €</figure>
           <figure class="pricing-row ">Nombre de couverts : {{fiche.nbCouverts}}</figure>
 
