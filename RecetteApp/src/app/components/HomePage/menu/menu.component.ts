@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthentificationService} from "../../../services/authentification.service";
+import firebase from "firebase/compat";
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+
+
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +14,10 @@ import {AuthentificationService} from "../../../services/authentification.servic
 })
 export class MenuComponent implements OnInit {
 
-
-  constructor(private authentificationService: AuthentificationService) { }
+  imgFileName:string = 'logo.png';
+  constructor(private authentificationService: AuthentificationService,
+              public afDB: AngularFireDatabase,
+              public afSG: AngularFireStorage) { }
 
   ngOnInit(): void {
 
@@ -26,7 +33,5 @@ export class MenuComponent implements OnInit {
     }
 
   }
-
-
 
 }

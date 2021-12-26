@@ -1,12 +1,37 @@
-<app-menu></app-menu>
-<div class="container">
+
+
   <div class=" text-center mt-5 ">
     <h1> Liste des ingrédients  </h1>
   </div>
 
-    <div class=" text-center  "><button class="btn btn-success" type="submit" routerLink="/Ingredients/AjouterIngredient" >Ajouter un ingrédient</button></div>
+  <table class="table">
+
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Unite</th>
+        <th scope="col">Prix Unitaire</th>
+        <th scope="col">Catégorie</th>
+      </tr>
+
+    <tbody>
+    <tr *ngFor="let ingredient of Ingredients">
+
+      <td>{{ingredient.code}}</td>
+      <td>{{ingredient.libelle}}</td>
+      <td>{{ingredient.unite}}</td>
+      <td>{{ingredient.prix_unitaire}}</td>
+      <td>{{ingredient.categorie}}</td>
+      <td>
+        <span (click)="removeIngredients(ingredient)" class="btn btn-danger">Supprimer</span>&nbsp;
+        <span routerLink="/ModifierIngredient" class="btn btn-primary">Modifier</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+    <div class=" text-center  ">
+      <button class="btn btn-success" type="submit" routerLink="/AjouterIngredient" >Ajouter un ingrédient</button></div>
 
 
 
-
-</div>

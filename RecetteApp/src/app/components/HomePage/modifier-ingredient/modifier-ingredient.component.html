@@ -1,0 +1,99 @@
+<br>
+<div class="container"> <div class=" text-center mt-5 ">
+  <h1>Modifier un ingredient </h1>
+</div>
+
+  <div class="row ">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form id="contact-form" role="form" [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="controls" >
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label >Code</label>
+                      <input formControlName="Code"
+                             type="text"
+                             class="form-control" >
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+
+                    <div class="form-group"> <label>Libellé </label>
+                      <input type="text"
+                             formControlName="libelle"
+                             class="form-control"
+                             placeholder="libellé"
+                             required
+                             data-error="libelle is required.">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div div class="form-group">
+                      <label>Catégorie</label>
+
+                    <!--  <select class="form-control" aria-label="Default select example" class="form-control"> -->
+                        <input type="text"
+                               formControlName="categorie"
+                               class="form-control"
+                               placeholder="categorie"
+                               required
+                               data-error="categorie is required.">
+                        <!--
+                        <option value="" selected disabled>--Seléctionner une catégorie--</option>
+                        <option value="Viandes">Viandes</option>
+                        <option value="Legumes">Legumes</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="Epices">Epices</option>
+                      </select>-->
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Prix Unitaire</label>
+                      <input id="prix_unitaire"
+                             type = number
+                             formControlName="prix_unitaire"
+                             class="form-control"
+                             placeholder="Entrer le prix unitaire "
+                             required="required">
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Unite</label>
+                      <input formControlName="unite"
+                             type="text"
+                             class="form-control" >
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!editForm.valid" >Modifier </button>
+                    <button class="btn btn-danger" type="reset">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+  </div>
+</div>
+
+
+
+
