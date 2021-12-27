@@ -7,6 +7,8 @@
   <table class="table">
 
       <tr>
+
+        <th scope="col">Code</th>
         <th scope="col">Libelle</th>
         <th scope="col">Unite</th>
         <th scope="col">Prix Unitaire</th>
@@ -16,14 +18,14 @@
 
     <tbody>
     <tr *ngFor="let ingredient of Ingredients; let i = index">
-
+      <td>{{ingredient.code}}</td>
       <td>{{ingredient.libelle}}</td>
       <td>{{ingredient.unite}}</td>
       <td>{{ingredient.prix_unitaire}}</td>
       <td>{{ingredient.categorie}}</td>
       <td>
         <span (click)="removeIngredients(ingredient)" class="btn btn-danger">Supprimer</span>&nbsp;
-        <span routerLink="/ModifierIngredient" class="btn btn-primary">Modifier</span>
+        <span [routerLink]="['/ModifierIngredient/',ingredient.id]" class="btn btn-primary">Modifier</span>
       </td>
     </tr>
     </tbody>

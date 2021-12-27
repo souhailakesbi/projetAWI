@@ -21,6 +21,7 @@ export class AjouterIngredientComponent implements OnInit {
     public formBuilder : FormBuilder,
     public router : Router){
     this.ingredientForm = this.formBuilder.group({
+      code :[''],
       libelle: [''],
       unite: [''],
       prix_unitaire: [''],
@@ -30,6 +31,7 @@ export class AjouterIngredientComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
   onSubmit(){

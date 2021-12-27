@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import {Ingredients} from '../models/ingredients';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngredientsService {
-  private dbPath = '/ingredients';
+  private dbPath = 'ingredients';
   liste_ingredients: Ingredients[] = [];// pas necessaire
   public angularFirebase: AngularFirestoreCollection<Ingredients> ;
   constructor(private db: AngularFirestore) {
@@ -19,8 +20,8 @@ export class IngredientsService {
 
   }
 
-  getIngredient(code: string) {
-    return this.angularFirebase.doc(code).valueChanges();
+  getIngredient(id: string|null) : Observable<any>{
+    return this.db.collection('ingredients').doc(id!).valueChanges();
     console.log("arrivé sur getingredient")
   }
 
@@ -35,14 +36,16 @@ export class IngredientsService {
   }
 
 
-  deleteIngredient(id : string){
-    return this.db.collection('ingredients').doc(id).delete();
+  deleteIngredient(id: string | null){
+    return this.db.collection('ingredients').doc(id!).delete();
     console.log("Ingredient bien deleteingredients");
   }
 
-  updateIngredient(id: string, ingredient: Ingredients){
-    return this.db.collection('ingredients').doc(id).update(
+  updateIngredient(ingredient: Ingredients,id: string|null) : Promise<any>{
+    //console.log("Fonction updateIngredient");
+    return this.db.collection('ingredients').doc(id!).update(
       {
+        code : ingredient.code,
         libelle: ingredient.libelle,
         unite: ingredient.unite,
         prix_unitaire: ingredient.prix_unitaire,
@@ -64,4 +67,5 @@ export class IngredientsService {
   }
 
  */
+
 }

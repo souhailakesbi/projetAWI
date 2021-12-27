@@ -17,7 +17,7 @@ export class IngredientsComponent implements OnInit {
     this.ingredientService.getIngredientList().subscribe(res =>{
       this.Ingredients = res.map(c => {
         return{
-          code: c.payload.doc.id, ...c.payload.doc.data() as {}
+          id: c.payload.doc.id, ...c.payload.doc.data() as {}
         } as Ingredients;
       })
     });
@@ -25,8 +25,8 @@ export class IngredientsComponent implements OnInit {
   }
 
   removeIngredients(ingredients : Ingredients){
-    if(confirm("are you sure to delete"+ ingredients.libelle)){
-      this.ingredientService.deleteIngredient(ingredients.code);
+    if(confirm("are you sure to delete  "+ ingredients.libelle)){
+      this.ingredientService.deleteIngredient(ingredients.id);
       console.log("Ingredient bien supprimé")
     }
     else{

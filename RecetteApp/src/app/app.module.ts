@@ -51,7 +51,7 @@ const AppRoutes: Routes = [
   {path: 'AjouterChef', component: AjouterChefComponent},
   {path: 'AjouterIngredient', component: AjouterIngredientComponent},
   {path: 'AjouterStock', component: AjoutStockComponent},
-  {path: 'ModifierIngredient', component: ModifierIngredientComponent}
+  {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent}
 
 
 
