@@ -32,6 +32,7 @@ import {providePerformance, getPerformance} from '@angular/fire/performance';
 import {provideRemoteConfig, getRemoteConfig} from '@angular/fire/remote-config';
 import {provideStorage, getStorage} from '@angular/fire/storage';
 import {AuthentificationService} from "./services/authentification.service";
+import { ModifierIngredientComponent } from './components/HomePage/modifier-ingredient/modifier-ingredient.component';
 
 
 const AppRoutes: Routes = [
@@ -42,15 +43,21 @@ const AppRoutes: Routes = [
   {path: 'ListeRecettes/Fiches/Modification', component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'Login', component: LoginComponent},
+  {path: '', redirectTo: '/Login', pathMatch: 'full'},
   {path: 'Ingredients', component: IngredientsComponent},
   {path: 'Stock', component: StockComponent},
   {path: 'Etiquette', component: FicheEtiquetteComponent},
   {path: 'Responsables', component: ResponsablesComponent},
   {path: 'AjouterChef', component: AjouterChefComponent},
-  {path: 'Ingredients/AjouterIngredient', component: AjouterIngredientComponent},
-  {path: 'Stock/AjouterStock', component: AjoutStockComponent}
+  {path: 'AjouterIngredient', component: AjouterIngredientComponent},
+  {path: 'AjouterStock', component: AjoutStockComponent},
+  {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent}
+
+
+
 ]
 @NgModule({
+  exports:[RouterModule],
   declarations: [
     AppComponent,
     RecetteListComponent,
@@ -67,7 +74,8 @@ const AppRoutes: Routes = [
     DetailsFicheComponent,
     ModificationFicheComponent,
     FichePrixComponent,
-    FicheEtiquetteComponent
+    FicheEtiquetteComponent,
+    ModifierIngredientComponent
   ],
   imports: [
     BrowserModule,

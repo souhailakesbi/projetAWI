@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
-    <img src="logo/logooo.png">
+    <img  type="logo" src="logo/logooo.png">
     <a class="navbar-brand" routerLink=" ">ReceipeApp</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,16 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="ListeRecettes">Recettes</a>
+          <a class="nav-link" routerLink="/ListeRecettes">Recettes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Ingredients">Ingrédients</a>
+          <a class="nav-link" routerLink="/Ingredients">Ingrédients</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="Stock">Stock</a>
+        <a class="nav-link" routerLink="/Stock">Stock</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Responsables">Responsables</a>
+          <a class="nav-link" routerLink="/Responsables">Responsables</a>
+        </li>
+
+        <li class="nav-item">
+          <button routerLink="/Login"  class="btn btn-secondary" type="submit" (click)="buttonLogoutForm()">LogOut</button>
         </li>
 
       </ul>
