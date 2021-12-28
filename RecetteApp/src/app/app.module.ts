@@ -25,6 +25,16 @@ import {AuthentificationService} from "./services/authentification/authentificat
 import { ListeStepComponent } from './components/HomePage/liste-step/liste-step.component';
 import {AuthGuardService} from "./services/authentification/auth-guard.service";
 import { ModificationEtapeComponent } from './components/HomePage/modification-etape/modification-etape.component';
+import {provideAuth, getAuth} from '@angular/fire/auth';
+import {provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService} from '@angular/fire/analytics';
+import {provideDatabase, getDatabase} from '@angular/fire/database';
+import {provideFunctions, getFunctions} from '@angular/fire/functions';
+import {provideMessaging, getMessaging} from '@angular/fire/messaging';
+import {providePerformance, getPerformance} from '@angular/fire/performance';
+import {provideRemoteConfig, getRemoteConfig} from '@angular/fire/remote-config';
+import {provideStorage, getStorage} from '@angular/fire/storage';
+import {AuthentificationService} from "./services/authentification.service";
+import { ModifierIngredientComponent } from './components/HomePage/modifier-ingredient/modifier-ingredient.component';
 
 
 const AppRoutes: Routes = [
@@ -41,9 +51,13 @@ const AppRoutes: Routes = [
   {path: 'Etiquette', component: FicheEtiquetteComponent},
   {path: 'Responsables', component: ResponsablesComponent},
   {path: 'AjouterChef', component: AjouterChefComponent},
-  {path: 'Ingredients/AjouterIngredient', component: AjouterIngredientComponent},
-  {path: 'Stock/AjouterStock', component: AjoutStockComponent},
+  {path: 'AjouterIngredient', component: AjouterIngredientComponent},
+  {path: 'AjouterStock', component: AjoutStockComponent},
+  {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent},
   {path: 'ListeEtapes/:id', component: ListeStepComponent}
+
+
+
 ]
 @NgModule({
   exports:[RouterModule],
@@ -63,9 +77,10 @@ const AppRoutes: Routes = [
     DetailsFicheComponent,
     ModificationFicheComponent,
     FichePrixComponent,
-    FicheEtiquetteComponent,
     ListeStepComponent,
-    ModificationEtapeComponent
+    ModificationEtapeComponent,
+    FicheEtiquetteComponent,
+    ModifierIngredientComponent
   ],
   imports: [
     BrowserModule,

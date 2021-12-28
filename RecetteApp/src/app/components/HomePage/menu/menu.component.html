@@ -9,7 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="ListeRecettes">Recettes</a>
+          <a class="nav-link" routerLink="/ListeRecettes">Recettes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Ingredients">Ingrédients</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="Ingredients">Ingrédients</a>
@@ -17,8 +20,10 @@
         <li class="nav-item">
         <a class="nav-link" routerLink="Stock">Stock</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" routerLink="Responsables">Responsables</a>
+          <button routerLink="/Login"  class="btn btn-secondary" type="submit" (click)="buttonLogoutForm()">LogOut</button>
         </li>
 
       </ul>
