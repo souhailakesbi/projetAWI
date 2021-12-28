@@ -1,0 +1,38 @@
+<br>
+<br>
+<div class="container">
+  <div class=" text-center mt-5 ">
+    <h1> Liste des étapes </h1>
+  </div>
+  <table class="table table-striped Primary" *ngFor="let step of steps;">
+    <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col"> Ajouter</th>
+      <th scope="col"> Modifier</th>
+      <th scope="col"> Supprimer</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{step.titleStep}}</td>
+      <td>
+        <Button class="btn btn-outline-success" (click)="addStep(step)">Ajouter</Button>
+      </td>
+      <td>
+        <Button class="btn btn-outline-info" (click)="modifyStep(step)">Modifier</Button>
+        </td>
+      <td>
+        <Button class="btn btn-outline-danger" (click)="removeStep(step)">Supprimer</Button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class=" text-center  ">
+    <a routerLink="/AjouterEtape" class="btn btn-outline-secondary">Ajouter une étape</a>
+
+  </div>
+</div>
+

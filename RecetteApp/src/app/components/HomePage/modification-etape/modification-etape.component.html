@@ -1,0 +1,67 @@
+<br>
+<div class="container">
+  <div class=" text-center mt-5 ">
+    <h1>Modifier une étape</h1>
+  </div>
+  <div class="row ">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form id="contact-form" role="form" [formGroup]="editStepForm" (ngSubmit)="onSubmit()"  novalidate >
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Titre</label>
+                      <input type="text"
+                             formControlName="titleStep"
+                             class="form-control"
+                             placeholder="Titre"
+                             required="required"
+                             data-error="Title is required.">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Durée</label>
+                    <input type="number"
+                           formControlName="time"
+                           class="form-control"
+                           required="required"
+                           placeholder="Durée de l'étape"
+                           data-error="Time is required.">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control"
+                              formControlName="description"
+                              placeholder="Description de l'étape"
+                              rows="3"
+                              required="required"
+                              data-error="Description is required.">
+                      </textarea>
+                  </div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]='!editStepForm.valid'>Modifier</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-success" type="reset"  >Annuler</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+  </div>
+</div>
+
+
