@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthentificationService} from "../../../services/authentification.service";
+import {AuthentificationService} from "../../../services/authentification/authentification.service";
 import firebase from "firebase/compat";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {AngularFireStorage} from "@angular/fire/compat/storage";

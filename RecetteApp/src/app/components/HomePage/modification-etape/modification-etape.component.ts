@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Step} from "../../../models/step/step";
+
 import {StepServiceService} from "../../../services/step/step-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-modification-etape',
