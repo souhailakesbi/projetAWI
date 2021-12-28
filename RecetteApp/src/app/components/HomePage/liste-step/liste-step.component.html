@@ -4,7 +4,7 @@
   <div class=" text-center mt-5 ">
     <h1> Liste des étapes </h1>
   </div>
-  <table class="table table-striped Primary" *ngFor="let step of steps; let i = index">
+  <table class="table table-striped Primary" *ngFor="let step of steps;">
     <thead>
     <tr>
       <th scope="col">Titre</th>
@@ -21,7 +21,7 @@
         <Button class="btn btn-outline-success" (click)="addStep(step)">Ajouter</Button>
       </td>
       <td>
-        <Button class="btn btn-outline-info" routerLink="/DetailsEtape/{{step.idStep}}">Modifier</Button>
+        <Button class="btn btn-outline-info" (click)="modifyStep(step)">Modifier</Button>
         </td>
       <td>
         <Button class="btn btn-outline-danger" (click)="removeStep(step)">Supprimer</Button>

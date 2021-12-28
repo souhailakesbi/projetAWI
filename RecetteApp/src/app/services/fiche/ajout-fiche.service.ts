@@ -24,7 +24,7 @@ export class AjoutFicheService {
   create(fiche:Fiche){
     return new Promise((resolve,reject) =>{
       this.db.collection('fiche').add(fiche).then(res => {
-        console.log(res)
+        console.log(res.id);
       }, error => reject(error));
     });
   }

@@ -12,8 +12,8 @@ export class StepServiceService {
   constructor(private db: AngularFirestore) {
     this.stepRef = db.collection(this.dbPath);
   }
-  getStepDoc(id: string | undefined){
-    return this.db.collection('step').doc(id).valueChanges();
+  getStepDoc(id: string|null){
+    return this.db.collection('step').doc(id!).valueChanges();
   }
   getStepList(){
     return this.db.collection('step').snapshotChanges();

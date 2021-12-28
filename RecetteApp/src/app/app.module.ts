@@ -24,7 +24,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthentificationService} from "./services/authentification/authentification.service";
 import { ListeStepComponent } from './components/HomePage/liste-step/liste-step.component';
 import {AuthGuardService} from "./services/authentification/auth-guard.service";
-import { DetailsEtapeComponent } from './components/HomePage/details-etape/details-etape.component';
+import { ModificationEtapeComponent } from './components/HomePage/modification-etape/modification-etape.component';
 
 
 const AppRoutes: Routes = [
@@ -32,7 +32,7 @@ const AppRoutes: Routes = [
   {path: 'ListeRecettes', canActivate:[AuthGuardService], component: RecetteListComponent},
   {path: 'AjouterRecette',canActivate:[AuthGuardService], component: CreerFicheComponent},
   {path: 'AjouterEtape', canActivate:[AuthGuardService],component: CreerEtapeComponent},
-  {path: 'Fiches/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent},
+  {path: 'Fiches/:id',canActivate:[AuthGuardService], component: ModificationEtapeComponent},
   {path: 'Modification/:id',canActivate:[AuthGuardService], component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'auth/Login', component: LoginComponent},
@@ -43,7 +43,7 @@ const AppRoutes: Routes = [
   {path: 'AjouterChef', component: AjouterChefComponent},
   {path: 'Ingredients/AjouterIngredient', component: AjouterIngredientComponent},
   {path: 'Stock/AjouterStock', component: AjoutStockComponent},
-  {path: 'ListeEtapes', component: ListeStepComponent}
+  {path: 'ListeEtapes/:id', component: ListeStepComponent}
 ]
 @NgModule({
   exports:[RouterModule],
@@ -65,7 +65,7 @@ const AppRoutes: Routes = [
     FichePrixComponent,
     FicheEtiquetteComponent,
     ListeStepComponent,
-    DetailsEtapeComponent
+    ModificationEtapeComponent
   ],
   imports: [
     BrowserModule,

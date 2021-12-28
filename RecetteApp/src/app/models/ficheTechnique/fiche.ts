@@ -1,3 +1,5 @@
+import {Step} from "../step/step";
+
 export default class Fiche {
   id!: string;
   title!: string;
@@ -5,4 +7,5 @@ export default class Fiche {
   materielSpecifique?: string
   nbCouverts!: number;
   responsable!:string;
+  listeStep: Step[] = [];
 }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
 import {Step} from "../../../models/step/step";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {StepServiceService} from "../../../services/step/step-service.service";
 import Fiche from "../../../models/ficheTechnique/fiche";
 
@@ -14,13 +14,13 @@ import Fiche from "../../../models/ficheTechnique/fiche";
 })
 export class CreerFicheComponent implements OnInit {
    public ficheForm! : FormGroup;
-  //public listeStep?: Step[];
-  public recette! : Fiche;
+   id! : string|null;
+
   constructor(
   public ficheService : AjoutFicheService,
   public formBuilder : FormBuilder,
   public router: Router,
-  public step : StepServiceService,
+  private act:ActivatedRoute
   ) {
     this.ficheForm = this.formBuilder.group({
       title: [''],
@@ -28,16 +28,23 @@ export class CreerFicheComponent implements OnInit {
       materielSpecifique: [''],
       nbCouverts: null,
       responsable:[''],
+      listeStep: ['']
     });
+
+
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
+
     this.ficheService.create(this.ficheForm.value);
-    this.router.navigate(['AjouterEtape', this.recette.id]);
-    console.log("recette",this.recette);
+    this.id = this.ficheForm.value.id;
+    console.log(this.id);
+    this.router.navigate(['ListeEtapes',this.id]);
+
+
   }
 
   /*newFiche():void{
