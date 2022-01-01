@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
 })
 export class IngredientsService {
   private dbPath = 'ingredients';
-  liste_ingredients: Ingredients[] = [];// pas necessaire
   public angularFirebase: AngularFirestoreCollection<Ingredients> ;
   constructor(private db: AngularFirestore) {
     this.angularFirebase = db.collection(this.dbPath);
@@ -16,7 +15,7 @@ export class IngredientsService {
 
   getIngredientList(){
     return this.db.collection('ingredients').snapshotChanges();
-    console.log("arrivé sur liste getingredient");
+    //console.log("arrivé sur liste getingredient");
 
   }
 
@@ -53,19 +52,6 @@ export class IngredientsService {
       }
     );
   }
-/*
-  create(ingredients: Ingredients) {
-    return this.IngredientsRef.add({ ...ingredients });
-  }
 
-  update(code: string, data: any): Promise<void> {
-    return this.IngredientsRef.doc(code).update(data);
-  }
-
-  delete(code: string): Promise<void> {
-    return this.IngredientsRef.doc(code).delete();
-  }
-
- */
 
 }

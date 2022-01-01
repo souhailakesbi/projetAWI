@@ -1,5 +1,8 @@
-export class Ingredients {
+import {Ingredients} from "../ingredients";
+
+export class Stock {
+  id!: string;
   ingredient_stock! : Ingredients;
-  quantité!:number;
+  quantite!:number;
   prix_total!: number;
 }
