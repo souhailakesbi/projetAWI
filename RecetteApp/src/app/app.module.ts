@@ -45,7 +45,9 @@ const AppRoutes: Routes = [
   {path: 'AjouterIngredient', component: AjouterIngredientComponent},
   {path: 'AjouterStock', component: AjoutStockComponent},
   {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent},
-  {path: 'ListeEtapes/:id', component: ListeStepComponent}
+  {path: 'ListeEtapes/:id', component: ListeStepComponent},
+  {path: 'ListeEtapes', component: ListeStepComponent},
+  {path: 'DetailsFiche/:id', component: DetailsFicheComponent}
 
 
 

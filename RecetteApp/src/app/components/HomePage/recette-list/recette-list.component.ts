@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Fiche from "../../../models/ficheTechnique/fiche";
 import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-recette-list',
@@ -10,7 +11,10 @@ import {map} from "rxjs/operators";
 })
 export class RecetteListComponent implements OnInit {
   fiches!: Fiche[];
-  constructor(public ficheService : AjoutFicheService) { }
+
+  constructor(public ficheService : AjoutFicheService,
+  private router: Router) {}
+
 
   ngOnInit(): void {
     this.ficheService.getFicheList().subscribe(res =>{
@@ -24,6 +28,12 @@ export class RecetteListComponent implements OnInit {
   removeFiche(fiche:Fiche){
     if(confirm("Désirez-vous supprimer cette recettes ?"+ fiche.title)){
       this.ficheService.delete(fiche.id);
+    }
+  }
+
+  selectFiche(fiche:Fiche){
+    if(confirm("Voulez-vous les détails de cette recette ?"+ fiche.title)){
+      this.router.navigate(['DetailsFiche', fiche.id])
     }
   }
 }

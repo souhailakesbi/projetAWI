@@ -9,10 +9,7 @@ import {Router} from "@angular/router";
 export class AuthentificationService {
   isLoggedIn = false;
 
-  constructor(
-    public router: Router,
-    public auth: AngularFireAuth
-  ) {
+  constructor(public router: Router, public auth: AngularFireAuth) {
   }
 
   loginUser(email: string, password: string) {

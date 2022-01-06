@@ -9,7 +9,7 @@
       <div class="card mt-2 mx-auto p-4 bg-light">
         <div class="card-body bg-light">
           <div class="container">
-            <form id="contact-form" role="form" [formGroup]="ficheForm" (ngSubmit)="onSubmit()" novalidate>
+            <form id="contact-form" role="form" [formGroup]="ficheForm"  novalidate>
               <div class="controls" >
                 <div class="row">
                   <div class="col-md-6">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <button class="btn btn-success" type="submit" [disabled]="!ficheForm.valid" >Ajouter une étape</button>
+                    <button class="btn btn-success" type="submit" [disabled]="!ficheForm.valid" (click)="onSubmit()">Ajouter une étape</button>
                     <button class="btn btn-danger" type="reset">Reset</button>
                   </div>
                 </div>

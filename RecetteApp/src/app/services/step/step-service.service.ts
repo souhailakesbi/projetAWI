@@ -9,15 +9,19 @@ import {Step} from "../../models/step/step";
 export class StepServiceService {
   private  dbPath = '/step'
   stepRef : AngularFirestoreCollection<Step>;
+
   constructor(private db: AngularFirestore) {
     this.stepRef = db.collection(this.dbPath);
   }
+
   getStepDoc(id: string|null){
     return this.db.collection('step').doc(id!).valueChanges();
   }
+
   getStepList(){
     return this.db.collection('step').snapshotChanges();
   }
+
   getAll() : AngularFirestoreCollection<Step>{
     return this.stepRef;
   }
