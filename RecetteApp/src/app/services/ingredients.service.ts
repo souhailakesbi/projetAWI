@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from '@angular/fire/compat/firestore';
 import {Ingredients} from '../models/ingredients';
 import {Observable} from "rxjs";
 
@@ -14,8 +14,9 @@ export class IngredientsService {
   }
 
   getIngredientList(){
+
     return this.db.collection('ingredients').snapshotChanges();
-    //console.log("arrivé sur liste getingredient");
+    console.log("arrivé sur liste getingredient dasn service ingredeitn");
 
   }
 

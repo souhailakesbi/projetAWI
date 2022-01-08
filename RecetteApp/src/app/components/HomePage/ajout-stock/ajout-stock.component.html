@@ -15,16 +15,18 @@
 
                   <div class="col-md-6">
 
-                    <div class="form-group">
+                    <div class="form-group" >
                       <label>Ingredient </label>
-                      <input type="text"
-                             formControlName="ingredient_stock.libelle"
-                             class="form-control"
-                             placeholder="ingredient_stock.libelle"
-                             required
-                             data-error="ingredient stock is required.">
+                      <select class="form-control" >
+                        <option value="" >-----Choisir un ingredient-----</option>
+                        <option (select)="addIngredient(ingredient)"  *ngFor="let ingredient of ingredients" >{{ingredient.libelle}}</option>
+                        (ingredient)="onSelected($event)
+                      </select>
+
+
                     </div>
                   </div>
+
 
 
                   <div class="col-md-6">
@@ -57,7 +59,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6">
-                    <button class="btn btn-success" type="submit" [disabled]="!stockForm.valid" >Ajouter </button>
+                    <button class="btn btn-success" type="submit" [disabled]="!stockForm.valid" (click)="onSubmit()" >Ajouter </button>
                     <button class="btn btn-danger" type="reset">Reset</button>
                   </div>
                 </div>

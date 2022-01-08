@@ -12,11 +12,8 @@
   <tr>
 
     <th scope="col">Id</th>
-    <th scope="col">Code ingredient</th>
-    <th scope="col">Libelle</th>
-    <th scope="col">Unite</th>
-    <th scope="col">Prix Unitaire</th>
-    <th scope="col">Catégorie</th>
+    <th scope="col"> Libellé ingredient</th>
+
     <th scope="col">Quantité</th>
     <th scope="col">Prix total</th>
     <th scope="col">Actions</th>
@@ -25,16 +22,15 @@
   <tbody>
   <tr *ngFor="let stoc of Stock; let i = index">
     <td>{{stoc.id}}</td>
-    <td>{{stoc.ingredient_stock.code}}</td>
-    <td>{{stoc.ingredient_stock.libelle}}</td>
-    <td>{{stoc.ingredient_stock.unite}}</td>
-    <td>{{stoc.ingredient_stock.prix_unitaire}}</td>
-    <td>{{stoc.ingredient_stock.categorie}}</td>
+    <td>
+      <button class="btn btn-secondary mb-2" type="submit" routerLink="/Ingredients" >{{stoc.ingredient_stock.libelle}}</button>
+    </td>
+
     <td>{{stoc.quantite}}</td>
     <td>{{stoc.prix_total}}</td>
     <td>
       <span (click)="removeStock(stoc)" class="btn btn-danger">Supprimer</span>&nbsp;
-      <span [routerLink]="['/ModifierStock/',stoc.id]" class="btn btn-primary">Modifier</span>
+     <span [routerLink]="['/ModifierStock/',stoc.id]" class="btn btn-primary">Modifier</span>
     </td>
   </tr>
   </tbody>

@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Ingredients} from "../../../models/ingredients";
 import {IngredientsService} from "../../../services/ingredients.service";
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-ajout-stock',
   templateUrl: './ajout-stock.component.html',
@@ -14,39 +15,57 @@ export class AjoutStockComponent implements OnInit {
 
   stock: Stock = new Stock();
   submitted = false;
+  ingredients!:Ingredients[];
+  ingredientService! : IngredientsService;
 
   public stockForm: FormGroup;
   constructor(
     public stockService : StockService,
     public formBuilder : FormBuilder,
     public router : Router){
+
+    this.stockService.getAllIngredient().subscribe(
+      res =>{
+        this.ingredients = res.map(e => {
+            return {
+              id: e.payload.doc.id, ...e.payload.doc.data() as {}
+            } as Ingredients;
+          }
+        )
+      }
+    );
+    //this.stockService.getAllIngredient();
     this.stockForm = this.formBuilder.group({
-      ingredient_stock :[''],
+      ingredient_stock: [],
       quantite: [''],
       prix_total: ['']
     })
+  }
+
+  addIngredient(ingredient:Ingredients){
+    this.stockForm.value.ingredient_stock= ingredient;
+    console.log(this.stockForm.value.ingredient_stock.id);
   }
 
 
   ngOnInit(): void {
   }
 
+
+
   onSubmit(){
     this.stockService.createStock(this.stockForm.value);
     this.router.navigate(['Stock'])
     console.log("Ajout fait ")
+  }
+
+
+  getIngredient(id: string|null) {
+    this.stockService.getIngredient(id);
 
   }
 
-  saveIngredient(): void {
-    this.stockService.createStock(this.stock).then(() => {
-      console.log('Création de ingredient réussi');
-      this.submitted = true;
-    });
-  }
-
-  newTutorial(): void {
-    this.submitted = false;
-    this.stock = new Stock();
+  onSelected(ingredient: Ingredients) {
+    this.stock.ingredient_stock = ingredient;
   }
 }
