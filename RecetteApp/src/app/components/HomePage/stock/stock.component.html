@@ -26,7 +26,7 @@
     </td>
 
     <td>{{stoc.quantite}}</td>
-    <td>{{stoc.prix_total}}</td>
+    <td>{{stoc.ingredient_stock.prix_unitaire*stoc.quantite}}</td>
     <td>
       <span (click)="removeStock(stoc)" class="btn btn-danger">Supprimer</span>&nbsp;
      <span [routerLink]="['/ModifierStock/',stoc.id]" class="btn btn-primary">Modifier</span>

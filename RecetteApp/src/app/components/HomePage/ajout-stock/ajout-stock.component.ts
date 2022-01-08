@@ -38,7 +38,7 @@ export class AjoutStockComponent implements OnInit {
     this.stockForm = this.formBuilder.group({
       ingredient_stock: ['',Validators.required],
       quantite: ['',Validators.required],
-      prix_total: ['',Validators.required]
+     // prix_total: [this.stock.quantite]
     })
   }
 

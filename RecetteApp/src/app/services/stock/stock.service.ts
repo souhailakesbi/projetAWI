@@ -55,8 +55,7 @@ export class StockService {
   updateStock(stock : Stock, id:string|null){
     return this.db.collection('stock').doc(id!).update({
       ingredient_stock : stock.ingredient_stock,
-      quantite: stock.quantite,
-      prix_total: stock.prix_total
+      quantite: stock.quantite
 
     });
 
