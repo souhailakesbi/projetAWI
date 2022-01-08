@@ -15,12 +15,13 @@
 
                   <div class="col-md-6">
 
-                    <div class="form-group" >
+                    <div class="select" >
                       <label>Ingredient </label>
-                      <select class="form-control" >
+                      <select class="form-control" type=Ingredients  formControlName="ingredient_stock" >
+
                         <option value="" >-----Choisir un ingredient-----</option>
-                        <option (select)="addIngredient(ingredient)"  *ngFor="let ingredient of ingredients" >{{ingredient.libelle}}</option>
-                        (ingredient)="onSelected($event)
+                        <option  *ngFor="let ingredient of ingredients"  [ngValue]="ingredient"   >{{ingredient.libelle}}</option>
+
                       </select>
 
 
@@ -33,7 +34,7 @@
                     <div class="form-group">
                       <label>Quantité</label>
                       <input id="quantite"
-                             type = text
+                             type = number
                              formControlName="quantite"
                              class="form-control"
                              placeholder="Entrer la quantité "
@@ -59,7 +60,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6">
-                    <button class="btn btn-success" type="submit" [disabled]="!stockForm.valid" (click)="onSubmit()" >Ajouter </button>
+                    <button class="btn btn-success" type="submit" [disabled]="!stockForm.valid"  >Ajouter </button>
                     <button class="btn btn-danger" type="reset">Reset</button>
                   </div>
                 </div>

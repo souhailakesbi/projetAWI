@@ -29,6 +29,7 @@ export class StockService {
   }
 
 
+
   getStockList(){
     return this.db.collection('stock').snapshotChanges();
   }

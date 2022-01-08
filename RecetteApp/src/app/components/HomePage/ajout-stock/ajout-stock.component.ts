@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { StockService } from '../../../services/stock/stock.service';
 import {Stock} from '../../../models/stock/stock';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Ingredients} from "../../../models/ingredients";
 import {IngredientsService} from "../../../services/ingredients.service";
@@ -12,7 +12,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./ajout-stock.component.css']
 })
 export class AjoutStockComponent implements OnInit {
-
+  @Input() ingredient!: Ingredients;
   stock: Stock = new Stock();
   submitted = false;
   ingredients!:Ingredients[];
@@ -36,15 +36,16 @@ export class AjoutStockComponent implements OnInit {
     );
     //this.stockService.getAllIngredient();
     this.stockForm = this.formBuilder.group({
-      ingredient_stock: [],
-      quantite: [''],
-      prix_total: ['']
+      ingredient_stock: ['',Validators.required],
+      quantite: ['',Validators.required],
+      prix_total: ['',Validators.required]
     })
   }
 
   addIngredient(ingredient:Ingredients){
     this.stockForm.value.ingredient_stock= ingredient;
-    console.log(this.stockForm.value.ingredient_stock.id);
+    console.log(ingredient);
+
   }
 
 
@@ -54,6 +55,7 @@ export class AjoutStockComponent implements OnInit {
 
 
   onSubmit(){
+
     this.stockService.createStock(this.stockForm.value);
     this.router.navigate(['Stock'])
     console.log("Ajout fait ")
@@ -65,7 +67,5 @@ export class AjoutStockComponent implements OnInit {
 
   }
 
-  onSelected(ingredient: Ingredients) {
-    this.stock.ingredient_stock = ingredient;
-  }
+
 }

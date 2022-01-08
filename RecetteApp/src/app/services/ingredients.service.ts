@@ -20,6 +20,8 @@ export class IngredientsService {
 
   }
 
+
+
   getIngredient(id: string|null) : Observable<any>{
     return this.db.collection('ingredients').doc(id!).valueChanges();
     console.log("arrivé sur getingredient")
