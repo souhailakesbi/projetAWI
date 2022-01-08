@@ -1,3 +1,4 @@
+
 <br>
 <app-menu></app-menu>
 
@@ -13,7 +14,7 @@
             <form id="contact-form" role="form" [formGroup]="stepForm"  novalidate >
               <div class="controls">
                 <div class="row">
-                  <div class="col-md-6">
+
                     <div class="form-group">
                       <label>Titre</label>
                       <input type="text"
@@ -23,7 +24,7 @@
                              required="required"
                              data-error="Title is required.">
                     </div>
-                  </div>
+
                 </div>
                 <div class="row">
                     <div class="form-group">
@@ -49,7 +50,26 @@
                     </div>
                   </div>
 
-                  <p></p>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Ingrédients : </label>
+                    <br>
+                    <button type="button" (click)="addInput()">Ajouter</button>
+                  </div>
+                  <div formArrayName="listIngredient" *ngFor="let ingr of listIngredient.controls; let i =index;">
+                    <div class="form-row" [formGroupName]="i" >
+                      <div class="form-group col">
+                        <label>Ingredient</label>
+                        <select class="form-control" formControlName="ingredient">
+                          <option>Choisir un ingrédient</option>
+                          <option *ngFor="let ingredient of ingredients">{{ingredient.libelle}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <p></p>
                 <div class="row">
                   <div class="col-md-6">
                     <button class="btn btn-success" type="submit"  [disabled]="!stepForm.valid" (click)="onSubmitStep()">

@@ -34,7 +34,7 @@ const AppRoutes: Routes = [
   {path: 'AjouterRecette',canActivate:[AuthGuardService], component: CreerFicheComponent},
   {path: 'AjouterEtape', canActivate:[AuthGuardService],component: CreerEtapeComponent},
   {path: 'Fiches/:id',canActivate:[AuthGuardService], component: ModificationEtapeComponent},
-  {path: 'Modification/:id',canActivate:[AuthGuardService], component: ModificationFicheComponent},
+  {path: 'Modification',canActivate:[AuthGuardService], component: ModificationFicheComponent},
   {path: 'Fiches/couts', component: FichePrixComponent},
   {path: 'auth/Login', component: LoginComponent},
   {path: 'Ingredients', component: IngredientsComponent},

@@ -9,7 +9,7 @@ import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
   styleUrls: ['./details-fiche.component.css']
 })
 export class DetailsFicheComponent implements OnInit {
-  @Input()fiche?:Fiche
+  @Input() fiche?:Fiche
   id : string | null;
   constructor(private ficheService: AjoutFicheService,
     private act : ActivatedRoute) {
@@ -23,7 +23,4 @@ export class DetailsFicheComponent implements OnInit {
     });
   }
 
-  modifyFiche(id:string|null){
-
-  }
 }

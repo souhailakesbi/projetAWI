@@ -46,7 +46,7 @@ export class ListeStepComponent implements OnInit {
   addStep(step:Step){
     if(confirm("Desirez-vous ajouter cette étape à votre recette?")) {
       console.log(this.listStep)
-      this.listStep.push(step);
+
       this.ficheService.updateListStep(this.id,this.listStep);
       console.log(this.listStep)
       console.log('Ajouter dans la liste')

@@ -20,15 +20,18 @@ export class AjoutFicheService {
   }
 
   getFicheDoc(id: string|null){
-    // @ts-ignore    //c'est sale -> à refaire
+       //c'est sale -> à refaire
+    // @ts-ignore
     this.fiche = this.db.collection('fiche').doc(id).valueChanges();
     return this.fiche;
+    //return this.db.collection('fiche').doc(id!).valueChanges();
+
   }
 
   updateListStep(id:string|null, listStep:Step[]){
-
     this.ficheRef.doc(id!).update({listeStep: listStep});
   }
+
   getFicheList(){
     return this.db.collection('fiche').snapshotChanges();
   }
