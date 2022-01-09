@@ -6,11 +6,65 @@
   </div>
 
 
+  <div class="container">
+    <form method="post" class="edit-form" [formGroup]="editForm" novalidate>
+      <div class="controls" >
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="coutHorairePersonnel" >  Cout Horaire Personnel</label>
+              <input
+                id="coutHorairePersonnel"
+                name = "coutHorairePersonnel"
+                value="coutHorairePersonnel"
+                formControlName="coutHorairePersonnel"
+                type="number"
+                class="form-control" >
+            </div>
+          </div>
+          <div class="col-md-6">
 
+            <div class="form-group">
+              <label for="coefficiantVente">Coefficiant Vente </label>
+              <input type="number"
+                     name ="coefficiantVente"
+                     id="coefficiantVente"
+                     formControlName="coefficiantVente"
+                     class="form-control"
+                     placeholder="coefficiantVente"
+                     required
+                     data-error="coefficiantVente is required.">
+            </div>
+          </div>
 
-  <div class=" text-center  ">
-    <button class="btn btn-success" >Enregistrer les modifications</button>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="coutFluide">Cout Fluide</label>
+              <input
+                name="coutFluide"
+                id="coutFluide"
+                type = number
+                formControlName="coutFluide"
+                class="form-control"
+                placeholder="Entrer le cout Fluide "
+                required="required">
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="row">
+          <div class=" text-center  ">
+            <button class="btn btn-success" type="submit" (click)="onSubmit()">Creer</button>
+            <button class="btn btn-success" (click)="update()">Enregistrer les modifications</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
+
+
+
 
 </div>
 

@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IngredientsService} from "../../../services/ingredients.service";
 import {ListeStepComponent} from "../liste-step/liste-step.component";
 import {Step} from "../../../models/step/step";
+import {CoutsService} from "../../../services/couts/couts.service";
+import {Couts} from "../../../models/couts/couts";
 
 @Component({
   selector: 'app-fiche-prix',
@@ -14,12 +16,14 @@ import {Step} from "../../../models/step/step";
 export class FichePrixComponent implements OnInit {
 
   @Input() fiche?:Fiche
+  couts! : any;
   id : string | null;
   ingredientName! : string
   constructor(private ficheService: AjoutFicheService,
               private route : Router,
               private act : ActivatedRoute,
-              private ingredientService:IngredientsService) {
+              private ingredientService:IngredientsService,
+              private coutsService: CoutsService) {
     this.id = this.act.snapshot.paramMap.get('id');
   }
 
@@ -28,26 +32,33 @@ export class FichePrixComponent implements OnInit {
       console.log(fiche);
       this.fiche = fiche;
     });
+    this.coutsService.getCout("PTJG0sAHhTGgjjSjlFgw").subscribe(couts =>{
+      console.log(couts);
+      this.couts = couts;
+    });
   }
 
   caculerCoutProduction(){
     let somme =0;
-    let chargePersoetFluide=25;
+    let duree=0;
+
     let coutProdu =0;
     this.fiche?.listeStep.forEach(Step=> {
-      for(let i=0; i<Step.listIngredient.length ; i++) {
-        somme += Step.listIngredient[i].prix_unitaire * Step.listQuantite[i]
+      for(var val in Step.listIngredient) {
+        somme += Step.listIngredient[val].prix_unitaire * Step.listQuantite[val];
       }
+      duree += Step.time;
     })
+    let chargePersoetFluide = this.couts.coutFluide+this.couts.coutHorairePersonnel*duree;
     coutProdu = chargePersoetFluide + somme*1.05
     return coutProdu;
   }
 
   caculerPrixdeVente(){
-    let coefficiant=2;
+    let coefficiant=this.couts.coefficiantVente;
     let prixdevente =0;
     let coutProdu=this.caculerCoutProduction();
-    prixdevente = coefficiant*coutProdu;
+    prixdevente =coefficiant *coutProdu;
     return prixdevente;
   }
 

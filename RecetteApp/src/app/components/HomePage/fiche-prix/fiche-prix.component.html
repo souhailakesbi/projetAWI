@@ -84,9 +84,9 @@
         </div>
       </div>
       <div class="row">
-        <h4>coût de production total: </h4>
-        <h4>coût de production par portion: </h4>
-        <h4>coût de production:</h4>
+        <h4>coût de production total: {{caculerCoutProduction()}}</h4>
+        <h4>Prix de vente: {{caculerPrixdeVente()}}</h4>
+        <h4>Benefice:{{caculerBenefice()}}</h4>
         <div class="col-md-3 doNotPrint" >
           <button class="btn btn-info" type="submit" (click)="print()">Imprimer</button>
         </div>
