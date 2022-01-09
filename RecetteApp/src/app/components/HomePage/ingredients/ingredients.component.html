@@ -5,8 +5,16 @@
     <h1> Liste des ingrédients  </h1>
   </div>
 
+
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Chercher un ingredient">
+  </div>
+
+
+
   <table class="table">
 
+    <thead>
       <tr>
 
         <th scope="col">Code</th>
@@ -14,16 +22,19 @@
         <th scope="col">Unite</th>
         <th scope="col">Prix Unitaire</th>
         <th scope="col">Catégorie</th>
+        <th scope="col">Allergene</th>
         <th scope="col">Actions</th>
       </tr>
+    </thead>
+    <tbody >
+    <tr  *ngFor="let ingredient of Ingredients|filter:searchText" >
 
-    <tbody>
-    <tr *ngFor="let ingredient of Ingredients; let i = index">
       <td>{{ingredient.code}}</td>
       <td>{{ingredient.libelle}}</td>
       <td>{{ingredient.unite}}</td>
       <td>{{ingredient.prix_unitaire}}</td>
       <td>{{ingredient.categorie.libelleCategorieIngredient}}</td>
+      <td>{{ingredient.allergene.intituleCategorieAllergene}}</td>
       <td>
         <span (click)="removeIngredients(ingredient)" class="btn btn-danger">Supprimer</span>&nbsp;
         <span [routerLink]="['/ModifierIngredient/',ingredient.id]" class="btn btn-primary">Modifier</span>

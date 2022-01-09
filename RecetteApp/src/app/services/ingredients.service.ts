@@ -61,7 +61,8 @@ export class IngredientsService {
         libelle: ingredient.libelle,
         unite: ingredient.unite,
         prix_unitaire: ingredient.prix_unitaire,
-        categorie: ingredient.categorie
+        categorie: ingredient.categorie,
+        allergene : ingredient.allergene
       }
     );
   }

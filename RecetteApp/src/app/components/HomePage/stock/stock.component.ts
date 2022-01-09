@@ -9,7 +9,7 @@ import {IngredientsService} from "../../../services/ingredients.service";
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent implements OnInit {
-
+  searchText: any;
   Stock!: Stock[];
   constructor(private stockService : StockService) { }
 

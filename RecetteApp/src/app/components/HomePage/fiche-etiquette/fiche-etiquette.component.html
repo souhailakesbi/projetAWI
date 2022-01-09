@@ -5,7 +5,8 @@
       <div class="row">
         <div class="col-md-9 col-xs-9">
           <a href="#" class="title" data-abc="true"> Intitulé : {{fiche.title}}</a>
-          <span class="rated">catégorie: </span>
+          <span class="rated">catégorie:{{fiche.categorie.libelleCategorieRecette}} </span>
+
           <br>
           <input type="checkbox" id="vente" name="vente" value="vente" (change)="visibleVente($event)">
           <label> Vente ? <span *ngIf="marked"> Ok !</span>

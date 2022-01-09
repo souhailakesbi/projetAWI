@@ -1,4 +1,5 @@
 import {Step} from "../step/step";
+import {CategorieRecette} from "../categorie_recette/categorie-recette";
 
 export default class Fiche {
   id!: string;
@@ -8,4 +9,5 @@ export default class Fiche {
   nbCouverts!: number;
   responsable!:string;
   listeStep!: Array<Step>;
+  categorie!:CategorieRecette
 }

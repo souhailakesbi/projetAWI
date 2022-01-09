@@ -55,7 +55,8 @@ export class AjoutFicheService {
       materielDressage: fiche.materielDressage,
       materielSpecifique: fiche.materielSpecifique,
       nbCouverts: fiche.nbCouverts,
-      responsable: fiche.responsable
+      responsable: fiche.responsable,
+      categorie: fiche.categorie
     });
   }
 

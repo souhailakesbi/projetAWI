@@ -53,12 +53,15 @@
                 </g>
               </svg>
             </div>
-            <div class="solu_title"><h3>{{fiche.title}}</h3></div>
+            <div class="solu_title"><h4>{{fiche.title}}</h4></div>
             <div class="solu_description">
+
               <p>Responsable : {{fiche.responsable}}</p>
               <p>Nombre de couverts : {{fiche.nbCouverts}}</p>
+
               <div class="row">
                <div class="col-md-12">
+
                   <button class="btn btn-success" type="submit" (click)="selectFiche(fiche)">Selectionner</button>
                   <button class="btn btn-danger" type="submit" (click)="removeFiche(fiche)">Supprimer</button>
                  <button class="btn btn-info" type="submit" (click)="afficher(fiche)">Etiquette</button>

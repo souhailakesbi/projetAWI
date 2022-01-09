@@ -27,7 +27,7 @@ import {AuthGuardService} from "./services/authentification/auth-guard.service";
 import { ModificationEtapeComponent } from './components/HomePage/modification-etape/modification-etape.component';
 import { ModifierIngredientComponent } from './components/HomePage/modifier-ingredient/modifier-ingredient.component';
 import { ModificationStockComponent } from './components/HomePage/modification-stock/modification-stock.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 const AppRoutes: Routes = [
   {path: '', redirectTo: 'auth/Login', pathMatch: 'full'},
@@ -80,6 +80,7 @@ const AppRoutes: Routes = [
     ModificationStockComponent
   ],
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

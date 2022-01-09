@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import { IngredientsService } from '../../../services/ingredients.service';
 import { map } from 'rxjs/operators';
 import {Ingredients} from "../../../models/ingredients";
+import {CategorieIngredientService} from "../../../services/categorie/categorie-ingredient.service";
+import {CategorieIngredient} from "../../../models/categorie_ingredient/categorie-ingredient";
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {conditionallyCreateMapObjectLiteral} from "@angular/compiler/src/render3/view/util";
@@ -18,6 +20,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class IngredientsComponent implements OnInit {
   @Input() step?:Step;
   Ingredients! : Ingredients[];
+  searchText: any;
+  Categories!:CategorieIngredient[];
+  Filtre: string ="Cremerie";
 
   listIngredient : Array<Ingredients> = new Array<Ingredients>();
   listQtite: Array<number> = new Array<number>();
@@ -26,13 +31,14 @@ export class IngredientsComponent implements OnInit {
   public quantiteForm! : FormGroup;
   constructor(private ingredientService : IngredientsService,private act : ActivatedRoute,
               private stepService: StepServiceService,
-              public formBuilder : FormBuilder,
+              public formBuilder : FormBuilder,private  categorieService : CategorieIngredientService,
   private route:Router) {
     this.id= this.act.snapshot.paramMap.get('id');
     this.quantiteForm = this.formBuilder.group({
       quantite:['']
     })
   }
+
 
   ngOnInit() {
     console.log(this.id)
@@ -47,6 +53,14 @@ export class IngredientsComponent implements OnInit {
       console.log(res);
       this.step = res;
     })
+
+    this.categorieService.getAllCategorieIngredient().subscribe(res =>{
+      this.Categories = res.map(c => {
+        return{
+          idCategorieIngredient: c.payload.doc.id, ...c.payload.doc.data() as {}
+        } as CategorieIngredient;
+      })
+    });
 
 
   }
