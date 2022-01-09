@@ -40,7 +40,7 @@ const AppRoutes: Routes = [
   {path: 'auth/Login', component: LoginComponent},
   {path: 'Ingredients',canActivate:[AuthGuardService], component: IngredientsComponent},
   {path: 'Stock',canActivate:[AuthGuardService], component: StockComponent},
-  {path: 'Etiquette',canActivate:[AuthGuardService], component: FicheEtiquetteComponent},
+  {path: 'Etiquette/:id',canActivate:[AuthGuardService], component: FicheEtiquetteComponent},
   {path: 'Responsables',canActivate:[AuthGuardService], component: ResponsablesComponent},
   {path: 'AjouterChef',canActivate:[AuthGuardService], component: AjouterChefComponent},
   {path: 'AjouterIngredient',canActivate:[AuthGuardService], component: AjouterIngredientComponent},

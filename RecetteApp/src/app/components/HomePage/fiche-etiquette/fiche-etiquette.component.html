@@ -1,2 +1,28 @@
-<app-menu></app-menu>
-<p>fiche-etiquette works!</p>
+
+<div class="container d-flex justify-content-center" *ngIf="fiche!=null">
+  <figure class="card card-product-grid card-lg">
+    <figcaption class="info-wrap">
+      <div class="row">
+        <div class="col-md-9 col-xs-9">
+          <a href="#" class="title" data-abc="true"> Intitulé : {{fiche.title}}</a>
+          <span class="rated">catégorie: </span>
+          <br>
+          <input type="checkbox" id="vente" name="vente" value="vente" (change)="visibleVente($event)">
+          <label> Vente ? <span *ngIf="marked"> Ok !</span>
+            <span *ngIf="!marked">No ! </span>
+          </label><br>
+        </div>
+      </div>
+    </figcaption>
+    <div class="bottom-wrap-payment">
+      <figcaption class="info-wrap">
+        <div class="row" *ngFor="let step of fiche.listeStep">
+          <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true">{{step.listIngredient}}</a></div>
+        </div>
+      </figcaption>
+    </div>
+    <div class="bottom-wrap doNotPrint"> <a class="btn btn-success float-right" data-abc="true" (click)="print()">Imprimer</a>
+      <a class="btn btn-danger float-right" data-abc="true" routerLink="/ListeRecettes">Retour</a>
+    </div>
+  </figure>
+</div>
