@@ -5,6 +5,9 @@
   <div class=" text-center mt-5 ">
     <h1> Liste des étapes </h1>
   </div>
+  <div class="search-hero">      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Chercher une etape">
+
+  </div>
   <table class="table table-striped Primary" >
     <thead>
     <tr>
@@ -15,7 +18,7 @@
 
     </tr>
     </thead>
-    <tbody *ngFor="let step of steps;">
+    <tbody *ngFor="let step of steps|filter:searchText">
     <tr>
       <td>{{step.titleStep}}</td>
       <td>

@@ -15,6 +15,7 @@ export class ListeStepComponent implements OnInit {
   listStep:Array<Step> = new Array<Step>();
   fiche!:void;
   id : string | null;
+  searchText:any;
   constructor(public stepService: StepServiceService,
   private route : Router,
   private act : ActivatedRoute,
