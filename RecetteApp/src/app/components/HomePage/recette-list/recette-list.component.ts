@@ -26,14 +26,20 @@ export class RecetteListComponent implements OnInit {
     });
   }
   removeFiche(fiche:Fiche){
-    if(confirm("Désirez-vous supprimer cette recettes ?"+ fiche.title)){
+    if(confirm("Désirez-vous supprimer cette recettes ? "+ fiche.title)){
       this.ficheService.delete(fiche.id);
     }
   }
 
   selectFiche(fiche:Fiche){
-    if(confirm("Voulez-vous les détails de cette recette ?"+ fiche.title)){
+    if(confirm("Voulez-vous les détails de cette recette ? "+ fiche.title)){
       this.router.navigate(['DetailsFiche', fiche.id])
+    }
+  }
+
+  afficher(fiche:Fiche){
+    if(confirm("Voulez-vous l'étiquette de cette recette ? "+ fiche.title)){
+      this.router.navigate(['Etiquette', fiche.id])
     }
   }
 }
