@@ -28,6 +28,7 @@ import { ModificationEtapeComponent } from './components/HomePage/modification-e
 import { ModifierIngredientComponent } from './components/HomePage/modifier-ingredient/modifier-ingredient.component';
 import { ModificationStockComponent } from './components/HomePage/modification-stock/modification-stock.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CoutsComponent } from './components/HomePage/couts/couts.component'
 
 const AppRoutes: Routes = [
   {path: '', redirectTo: 'auth/Login', pathMatch: 'full'},
@@ -50,6 +51,7 @@ const AppRoutes: Routes = [
   {path: 'ListeEtapes',canActivate:[AuthGuardService], component: ListeStepComponent},
   {path: 'DetailsFiche/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent},
   {path: 'Ingredients/:id',canActivate:[AuthGuardService], component: IngredientsComponent},
+  {path: 'Couts',canActivate:[AuthGuardService], component: CoutsComponent},
 
 
 
@@ -77,7 +79,8 @@ const AppRoutes: Routes = [
     ModificationEtapeComponent,
     FicheEtiquetteComponent,
     ModifierIngredientComponent,
-    ModificationStockComponent
+    ModificationStockComponent,
+    CoutsComponent
   ],
   imports: [
     Ng2SearchPipeModule,
