@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class RecetteListComponent implements OnInit {
   fiches!: Fiche[];
-
+  searchText: any;
   constructor(public ficheService : AjoutFicheService,
   private router: Router) {}
 

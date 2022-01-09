@@ -3,7 +3,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <div class="section_our_solution">
   <div class="row">
-    <div class="col-lg-4 col-md-8 col-sm-8" *ngFor="let fiche of fiches"  >
+    <div class="search-hero">      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Chercher une recette">
+
+    </div>
+
+    <div class="col-lg-4 col-md-8 col-sm-8" *ngFor="let fiche of fiches|filter:searchText"  >
       <div class="our_solution_category" >
         <div class="solution_cards_box" >
           <div class="solution_card" >
