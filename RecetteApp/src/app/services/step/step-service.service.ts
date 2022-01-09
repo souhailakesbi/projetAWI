@@ -4,10 +4,12 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 import {Step} from "../../models/step/step";
 import {Ingredients} from "../../models/ingredients";
 import {FormArray} from "@angular/forms";
+
 import {Router} from "@angular/router";
 import {QuantiteIngredient} from "../../models/quantite_ingredient/quantite-ingredient";
 import {Observable} from "rxjs";
 import Fiche from "../../models/ficheTechnique/fiche";
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,17 @@ export class StepServiceService {
     this.stepRef = db.collection(this.dbPath);
     this.listIngred = [];
   }
+
+  getAllIngredient(){
+    return this.db.collection('ingredients').snapshotChanges();
+    console.log("arrivé sur liste getAllIngrredeint dans stock service ");
+  }
+
+  getIngredient(id: string|null) : Observable<any>{
+    return this.db.collection('ingredients').doc(id!).valueChanges();
+    console.log("arrivé sur getingredient stock")
+  }
+
 
   getStepDoc(id: string|null){
     // @ts-ignore

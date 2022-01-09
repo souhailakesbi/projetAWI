@@ -2,12 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import { IngredientsService } from '../../../services/ingredients.service';
 import { map } from 'rxjs/operators';
 import {Ingredients} from "../../../models/ingredients";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {conditionallyCreateMapObjectLiteral} from "@angular/compiler/src/render3/view/util";
 import {StepServiceService} from "../../../services/step/step-service.service";
 import {QuantiteIngredient} from "../../../models/quantite_ingredient/quantite-ingredient"
 import {Step} from "../../../models/step/step";
 import {FormBuilder, FormGroup} from "@angular/forms";
+
 @Component({
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
@@ -16,6 +18,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class IngredientsComponent implements OnInit {
   @Input() step?:Step;
   Ingredients! : Ingredients[];
+
   listIngredient : Array<Ingredients> = new Array<Ingredients>();
   listQtite: Array<number> = new Array<number>();
   id: string | null;
@@ -30,6 +33,7 @@ export class IngredientsComponent implements OnInit {
       quantite:['']
     })
   }
+
   ngOnInit() {
     console.log(this.id)
     this.ingredientService.getIngredientList().subscribe(res =>{
@@ -43,6 +47,7 @@ export class IngredientsComponent implements OnInit {
       console.log(res);
       this.step = res;
     })
+
 
   }
 

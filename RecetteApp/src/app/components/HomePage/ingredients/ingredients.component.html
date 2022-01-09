@@ -23,7 +23,7 @@
       <td>{{ingredient.libelle}}</td>
       <td>{{ingredient.unite}}</td>
       <td>{{ingredient.prix_unitaire}}</td>
-      <td>{{ingredient.categorie}}</td>
+      <td>{{ingredient.categorie.libelleCategorieIngredient}}</td>
       <td>
         <span (click)="removeIngredients(ingredient)" class="btn btn-danger">Supprimer</span>&nbsp;
         <span [routerLink]="['/ModifierIngredient/',ingredient.id]" class="btn btn-primary">Modifier</span>
