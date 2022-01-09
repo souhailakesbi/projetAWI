@@ -12,9 +12,7 @@ export class AjouterIngredientComponent implements OnInit {
 
   ingredient: Ingredients = new Ingredients();
   submitted = false;
-  /*
-  constructor(private ingredientsService: IngredientsService) { }
-*/
+
   public ingredientForm: FormGroup;
   constructor(
     public ingredientService : IngredientsService,

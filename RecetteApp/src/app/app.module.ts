@@ -26,6 +26,7 @@ import { ListeStepComponent } from './components/HomePage/liste-step/liste-step.
 import {AuthGuardService} from "./services/authentification/auth-guard.service";
 import { ModificationEtapeComponent } from './components/HomePage/modification-etape/modification-etape.component';
 import { ModifierIngredientComponent } from './components/HomePage/modifier-ingredient/modifier-ingredient.component';
+import { ModificationStockComponent } from './components/HomePage/modification-stock/modification-stock.component';
 
 
 const AppRoutes: Routes = [
@@ -44,6 +45,7 @@ const AppRoutes: Routes = [
   {path: 'AjouterChef', component: AjouterChefComponent},
   {path: 'AjouterIngredient', component: AjouterIngredientComponent},
   {path: 'AjouterStock', component: AjoutStockComponent},
+  {path: 'ModifierStock/:id', component: ModificationStockComponent},
   {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent},
   {path: 'ListeEtapes/:id', component: ListeStepComponent}
 
@@ -71,7 +73,8 @@ const AppRoutes: Routes = [
     ListeStepComponent,
     ModificationEtapeComponent,
     FicheEtiquetteComponent,
-    ModifierIngredientComponent
+    ModifierIngredientComponent,
+    ModificationStockComponent
   ],
   imports: [
     BrowserModule,

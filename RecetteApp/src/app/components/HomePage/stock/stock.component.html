@@ -1,83 +1,43 @@
 
-
+<app-menu></app-menu>
 <br>
 <br>
-
 <div class="container">
-  <div class=" text-center mt-5 ">
-    <h1> Stock </h1>
-  </div>
-  <table class="table table-striped Primary">
-  <thead>
+<div class=" text-center mt-5 ">
+  <h1> Stock  </h1>
+</div>
+
+<table class="table">
+
   <tr>
-    <th scope="col">Code</th>
-    <th scope="col">Libellé </th>
-    <th scope="col">Unité</th>
-    <th scope="col"> Prix Unitaire</th>
-    <th scope="col">Stock</th>
-    <th scope="col">Stock Valeur </th>
-    <th scope="col">Action</th>
+
+    <th scope="col">Id</th>
+    <th scope="col"> Libellé ingredient</th>
+    <th scope="col">Quantité</th>
+    <th scope="col">Prix total</th>
+    <th scope="col">Actions</th>
   </tr>
-  </thead>
+
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Coco</td>
-    <td>piece</td>
-    <td>10€</td>
-    <td>10</td>
-    <td>100€</td>
-    <td><Button> Modifier </Button></td>
-  </tr>
+  <tr *ngFor="let stoc of Stock; let i = index">
+    <td>{{stoc.id}}</td>
+    <td>
+      <button class="btn btn-secondary mb-2" type="submit" routerLink="/Ingredients" >{{stoc.ingredient_stock.libelle}}</button>
+    </td>
 
-  <tr>
-    <th scope="row">2</th>
-    <td>Lait</td>
-    <td>Litres</td>
-    <td>10€</td>
-    <td>10</td>
-    <td>100€</td>
-    <td><Button> Modifier </Button></td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td>Banane</td>
-    <td>Gramme</td>
-    <td>10€</td>
-    <td>10</td>
-    <td>100€</td>
-    <td><Button> Modifier </Button></td>
-  </tr>
-  <tr>
-    <th scope="row">4</th>
-    <td>Cacahuete </td>
-    <td>Gramme</td>
-    <td>10€</td>
-    <td>9</td>
-    <td>90€</td>
-    <td><Button> Modifier </Button></td>
-  </tr>
-  <tr>
-    <th scope="row">5</th>
-    <td>Ananas</td>
-    <td>piece</td>
-    <td>2€</td>
-    <td>10</td>
-    <td>20€</td>
-    <td><Button> Modifier </Button></td>
-  </tr>
-
-  <tr>
-    <th scope="row">6</th>
-    <td>Eau</td>
-    <td>Litres</td>
-    <td>1€</td>
-    <td>10</td>
-    <td>10€</td>
-    <td><Button> Modifier </Button></td>
+    <td>{{stoc.quantite}}</td>
+    <td>{{stoc.ingredient_stock.prix_unitaire*stoc.quantite}}</td>
+    <td>
+      <span (click)="removeStock(stoc)" class="btn btn-danger">Supprimer</span>&nbsp;
+     <span [routerLink]="['/ModifierStock/',stoc.id]" class="btn btn-primary">Modifier</span>
+    </td>
   </tr>
   </tbody>
 </table>
-  <div class=" text-center  "><button class="btn btn-success" type="submit" routerLink="/Stock/AjouterStock" >Ajouter un Stock</button></div>
+
+<div class=" text-center  ">
+  <button class="btn btn-success" type="submit" routerLink="/AjouterStock" >Ajouter un stock</button></div>
+
+
 
 </div>
