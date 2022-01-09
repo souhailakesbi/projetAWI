@@ -4,6 +4,7 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 import {Step} from "../../models/step/step";
 import {Ingredients} from "../../models/ingredients";
 import {FormArray} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class StepServiceService {
   private  dbPath = '/step'
   stepRef : AngularFirestoreCollection<Step>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private router: Router) {
     this.stepRef = db.collection(this.dbPath);
     this.listIngred = [];
   }
@@ -26,7 +27,7 @@ export class StepServiceService {
     return this.db.collection('step').snapshotChanges();
   }
 
-  updateListIngredient(id: string | null, listIngredient: FormArray){
+  updateListIngredient(id: string | null, listIngredient: Ingredients[]){
     this.stepRef.doc(id!).update({listIngredient:listIngredient})
   }
 
@@ -37,7 +38,8 @@ export class StepServiceService {
   create(step:Step){
     return new Promise((resolve,reject) =>{
       this.db.collection('step').add(step).then(res => {
-        console.log(res)
+        console.log(res.id)
+        this.router.navigate(['Ingredients',res.id]);
       }, error => reject(error));
     });
   }

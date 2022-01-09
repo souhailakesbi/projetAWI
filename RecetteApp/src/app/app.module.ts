@@ -48,7 +48,8 @@ const AppRoutes: Routes = [
   {path: 'ModifierIngredient/:id',canActivate:[AuthGuardService], component: ModifierIngredientComponent},
   {path: 'ListeEtapes/:id',canActivate:[AuthGuardService], component: ListeStepComponent},
   {path: 'ListeEtapes',canActivate:[AuthGuardService], component: ListeStepComponent},
-  {path: 'DetailsFiche/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent}
+  {path: 'DetailsFiche/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent},
+  {path: 'Ingredients/:id',canActivate:[AuthGuardService], component: IngredientsComponent},
 
 
 

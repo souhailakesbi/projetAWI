@@ -36,10 +36,10 @@
                 <tr>
                   <th scope="row">Element de base:</th>
                 </tr>
-                <tr>
-                  <th scope="row">{{step.listIngredient}}</th>
-                  <td>{{step.listIngredient.value}}</td>
-                  <td>{{step.listIngredient.value}}</td>
+                <tr *ngFor="let ingredient of step.listIngredient">
+                  <th scope="row">{{ingredient.libelle}}</th>
+                  <td>{{ingredient.unite}}</td>
+                  <td>{{ingredient.prix_unitaire}}</td>
                 </tr>
                 </tbody>
               </table>

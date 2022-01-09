@@ -43,7 +43,7 @@ export class CreerEtapeComponent implements OnInit {
       titleStep: [''],
       description: [''],
       time: [''],
-      listIngredient: this.formBuilder.array([this.createIngr()])
+      listIngredient: ['']
     });
 
     //this.recipe = new Fiche();

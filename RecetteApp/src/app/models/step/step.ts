@@ -6,5 +6,5 @@ export  class Step {
   titleStep: string= "";
   description:string = "none";
   time:number = 1;
-  listIngredient!: FormArray
+  listIngredient!: Ingredients[]
 }
