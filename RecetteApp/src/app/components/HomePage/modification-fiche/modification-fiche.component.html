@@ -3,18 +3,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container">
+<div class="container" *ngIf="fiche!=null">
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="row">
         <div class="col">
-          <div>Intitulé: Tarte aux fraises</div>
+          <div>Intitulé: {{fiche.title}}</div>
         </div>
         <div class="col">
-          <div>Responsable: Souhaila</div>
+          <div>Responsable: {{fiche.responsable}}</div>
         </div>
         <div class="col">
-          <div>Nombre de couverts: 2</div>
+          <div>Nombre de couverts: {{fiche.nbCouverts}}</div>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="col">
           <div class="panel panel-info">
             <div class="panel-heading">Ingrédients</div>
-            <div class="panel-body">
+            <div class="panel-body" *ngFor="let step of fiche.listeStep;let i= index">
               <table class="table">
                 <thead>
                 <tr>
@@ -32,21 +32,21 @@
                   <th scope="col">Quantité</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let ingredient of step.listIngredient; ">
                 <tr>
                   <th scope="row">Element de base:</th>
                 </tr>
-                <tr>
-                  <th scope="row">Citron</th>
-                  <td>Kg</td>
-                  <td>3</td>
+                <tr *ngFor="let quant of step.listQuantite;">
+                  <th scope="row">{{ingredient.libelle}}</th>
+                  <td>{{ingredient.unite}}</td>
+                  <td>{{quant}}</td>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="col-md-4">
-            <button class="btn btn-success" routerLink="/Ingredients/AjouterIngredient" type="submit">Ajouter un
+            <button class="btn btn-success" routerLink="/Ingredients/{{this.id}}" type="submit">Ajouter un
               Ingrédient
             </button>
           </div>
@@ -54,28 +54,21 @@
         <div class="col">
           <div class="panel panel-info">
             <div class="panel-heading">Etapes</div>
-            <div class="panel-body">
+            <div class="panel-body" *ngFor="let step of fiche.listeStep">
               <div class="col">
                 <dl>
-                  <dt>Pate brisée</dt>
-                  <dd>Mélanger tous les ingrédients secs</dd>
-                  <dt>Crème citron</dt>
-                  <dd>Battre sur feu doux les oeufs avec le jus de citron.Il faut rajouter une petite cuillère de
-                    maizena pour l'épaississement
-                  </dd>
-                  <dt>Meringue</dt>
-                  <dd>Monter les blanc en neige avec sucre</dd>
-                  <dt>Pochage</dt>
-                  <dd>A l'aide d'une poche à douille, ....</dd>
+                  <dt>{{step.titleStep}}</dt>
+                  <dt>Durée: {{step.time}}/dt>
+                  <dd>{{step.description}}</dd>
                 </dl>
               </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary" routerLink="AjouterEtape" type="submit">
-                  Ajouter une étape
-                </button>
-              </div>
-            </div>
 
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary" routerLink="/ListeEtapes/{{this.id}}" type="submit">
+                Ajouter une étape existante
+              </button>
+            </div>
 
           </div>
         </div>
@@ -86,7 +79,7 @@
             <div class="panel-heading">Matériels Dressages</div>
             <div class="panel-body">
               <ol>
-                <li>None</li>
+                <li>{{fiche.materielDressage}}</li>
               </ol>
               <div class="col-md-4">
                 <button class="btn btn-primary" routerLink="#" type="submit">Ajouter</button>
@@ -99,8 +92,7 @@
             <div class="panel-heading">Matériels spécifiques</div>
             <div class="panel-body">
               <ol>
-                <li>Poche à douille</li>
-                <li> Douilles</li>
+                <li>{{fiche.materielSpecifique}}</li>
               </ol>
               <div class="col-md-4">
                 <button class="btn btn-primary" routerLink="#" type="submit">Ajouter</button>
@@ -111,7 +103,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary" routerLink="/ListeRecettes/Fiches" type="submit">Fin</button>
+          <button class="btn btn-primary" routerLink="/ListeRecettes" type="submit">Fin</button>
         </div>
 
       </div>

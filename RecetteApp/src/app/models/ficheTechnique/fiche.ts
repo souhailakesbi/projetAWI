@@ -8,6 +8,6 @@ export default class Fiche {
   materielSpecifique?: string
   nbCouverts!: number;
   responsable!:string;
-  listeStep!: Array<Step>;
+  listeStep: Step[]= [];
   categorie!:CategorieRecette
 }

@@ -54,8 +54,6 @@ const AppRoutes: Routes = [
   {path: 'Couts',canActivate:[AuthGuardService], component: CoutsComponent},
 
 
-
-
 ]
 @NgModule({
   exports:[RouterModule],

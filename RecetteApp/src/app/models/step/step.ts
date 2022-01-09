@@ -7,6 +7,6 @@ export  class Step {
   titleStep: string= "";
   description:string = "none";
   time:number = 1;
-  listIngredient!: Array<Ingredients>;
-  listQuantite!: Array<number>;
+  listIngredient: Ingredients[]=[];
+  listQuantite: number[] = [];
 }

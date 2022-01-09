@@ -57,4 +57,8 @@ export class FichePrixComponent implements OnInit {
     let benefice  = prixdevente-coutProdu;
     return benefice;
   }
+
+  print(){
+    window.print();
+  }
 }
