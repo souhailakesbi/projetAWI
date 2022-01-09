@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from '@angular/fire/compat/firestore';
 import {Ingredients} from '../models/ingredients';
 import {Observable} from "rxjs";
 import {collection, getDocs, query, where} from "@angular/fire/firestore";
@@ -9,7 +9,6 @@ import {collection, getDocs, query, where} from "@angular/fire/firestore";
 })
 export class IngredientsService {
   private dbPath = 'ingredients';
-  liste_ingredients: Ingredients[] = [];// pas necessaire
   public angularFirebase: AngularFirestoreCollection<Ingredients> ;
   constructor(private db: AngularFirestore) {
     this.angularFirebase = db.collection(this.dbPath);
@@ -25,10 +24,13 @@ export class IngredientsService {
 
   }
   getIngredientList(){
+
     return this.db.collection('ingredients').snapshotChanges();
-    console.log("arrivé sur liste getingredient");
+    console.log("arrivé sur liste getingredient dasn service ingredeitn");
 
   }
+
+
 
   getIngredient(id: string|null) : Observable<any>{
     return this.db.collection('ingredients').doc(id!).valueChanges();

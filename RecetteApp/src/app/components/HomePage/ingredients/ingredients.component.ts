@@ -34,45 +34,5 @@ export class IngredientsComponent implements OnInit {
     }
   }
 
-/*
-
-retrieveIngredients(): void {
-    this.ingredientService.getIngredientList().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id,...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.Ingredients = data;
-    });
-  }
-  ingredients: any;
-  currentIngredient : null;
-  currentIndex = -1;
-  title = '';
-
-  constructor(private ingredientService : IngredientsService) { }
-
-  ngOnInit(): void {
-    this.retrieveIngredients();
-  }
-
-  refreshList(): void {
-    this.currentIngredient = null;
-    this.currentIndex = -1;
-    this.retrieveIngredients();
-  }
-
-
-
-  setActiveIngredient(ingredient: any, index: number): void {
-    this.currentIngredient = ingredient;
-    this.currentIndex = index;
-  }
-*/
-
-
-
 }
 

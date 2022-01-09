@@ -1,0 +1,64 @@
+<app-menu></app-menu>
+<br>
+<div class="container"> <div class=" text-center mt-5 ">
+  <h1>Modifier un Stock </h1>
+</div>
+
+  <div class="row ">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form id="contact-form" role="form" [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="controls" >
+                <div class="row">
+
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+                      <label>Ingredient </label>
+                        <input
+                          formControlName="ingredient_stock"
+                          type = text
+                          class="form-control"
+                          id="ingredient_stock.libelle" >
+
+
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Quantité</label>
+                      <input
+                             formControlName="quantite"
+                             type = text
+                             class="form-control"
+                             id="quantite" >
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" >Modifier </button>
+                    <button class="btn btn-danger" type="reset">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+  </div>
+</div>
+
+
+
+
