@@ -40,7 +40,6 @@ export class CreerFicheComponent implements OnInit {
   onSubmit(){
     this.ficheService.create(this.ficheForm.value)
     console.log("Fiche sans étapes créée");
-
   }
 
   /*newFiche():void{

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import {Ingredients} from '../models/ingredients';
 import {Observable} from "rxjs";
+import {collection, getDocs, query, where} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,16 @@ export class IngredientsService {
   constructor(private db: AngularFirestore) {
     this.angularFirebase = db.collection(this.dbPath);
   }
+  async getIngredientByName(name: string) {
+    // @ts-ignore
+    const q = query(this.angularFirebase, where('libelle', '==', name))
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
 
+  }
   getIngredientList(){
     return this.db.collection('ingredients').snapshotChanges();
     console.log("arrivé sur liste getingredient");
@@ -53,19 +63,6 @@ export class IngredientsService {
       }
     );
   }
-/*
-  create(ingredients: Ingredients) {
-    return this.IngredientsRef.add({ ...ingredients });
-  }
 
-  update(code: string, data: any): Promise<void> {
-    return this.IngredientsRef.doc(code).update(data);
-  }
-
-  delete(code: string): Promise<void> {
-    return this.IngredientsRef.doc(code).delete();
-  }
-
- */
 
 }

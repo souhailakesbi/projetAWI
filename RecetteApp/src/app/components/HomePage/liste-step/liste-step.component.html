@@ -4,7 +4,7 @@
   <div class=" text-center mt-5 ">
     <h1> Liste des étapes </h1>
   </div>
-  <table class="table table-striped Primary" *ngFor="let step of steps;">
+  <table class="table table-striped Primary" >
     <thead>
     <tr>
       <th scope="col">Titre</th>
@@ -14,7 +14,7 @@
 
     </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let step of steps;">
     <tr>
       <td>{{step.titleStep}}</td>
       <td>
@@ -32,7 +32,7 @@
 
   <div class=" text-center  ">
     <a routerLink="/AjouterEtape" class="btn btn-outline-secondary">Ajouter une étape</a>
-
+    <a routerLink="/ListeRecettes" class="btn btn-outline-secondary">Fin</a>
   </div>
 </div>
 

@@ -46,7 +46,7 @@ export class ListeStepComponent implements OnInit {
   addStep(step:Step){
     if(confirm("Desirez-vous ajouter cette étape à votre recette?")) {
       console.log(this.listStep)
-
+      this.listStep.push(step);
       this.ficheService.updateListStep(this.id,this.listStep);
       console.log(this.listStep)
       console.log('Ajouter dans la liste')
@@ -55,7 +55,7 @@ export class ListeStepComponent implements OnInit {
   }
 
   modifyStep(step:Step){
-    if (confirm("Desirez-vous modifier cette étape")){
+    if (confirm("Desirez-vous modifier cette étape ?")){
       this.route.navigate(['Fiches', step.idStep]).then(r =>{
         console.log("fait"+r);
       });

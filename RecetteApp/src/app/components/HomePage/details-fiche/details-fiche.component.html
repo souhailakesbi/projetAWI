@@ -1,9 +1,9 @@
 <app-menu></app-menu>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container" *ngIf="fiche!=null">
+<div class="container" *ngIf="fiche!=null" >
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="row">
@@ -23,10 +23,10 @@
         <div class="col">
           <div class="panel panel-info">
             <div class="panel-heading">Ingrédients</div>
-            <div class="panel-body">
-              <table class="table">
+            <div class="panel-body" *ngFor="let step of fiche.listeStep;let i= index">
+              <table class="table" >
                 <thead>
-                <tr>
+                <tr >
                   <th scope="col">Nom</th>
                   <th scope="col">Unité</th>
                   <th scope="col">Quantité</th>
@@ -37,9 +37,9 @@
                   <th scope="row">Element de base:</th>
                 </tr>
                 <tr>
-                  <th scope="row">Citron</th>
-                  <td>Kg</td>
-                  <td>3</td>
+                  <th scope="row">{{step.listIngredient.}}</th>
+                  <td>{{step.listIngredient.value}}</td>
+                  <td>{{step.listIngredient.value}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -83,19 +83,19 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <button class="btn btn-primary" routerLink="/ListeRecettes/Fiches/Modification" type="submit">Modifier
+      <div class="row doNotPrint" >
+        <div class="col-md-3" >
+          <button class="btn btn-primary" (click)="modifyFiche()" type="submit">Modifier
           </button>
         </div>
-        <div class="col-md-3">
-          <button class="btn btn-info" routerLink="#" type="submit">Imprimer</button>
+        <div class="col-md-3" >
+          <button class="btn btn-info" type="submit" (click)="print()">Imprimer</button>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-danger" routerLink="/ListeRecettes" type="submit">Supprimer</button>
+          <button class="btn btn-danger" (click)="deleteFiche()" type="submit" >Supprimer</button>
         </div>
-        <div class="col-md-3">
-          <button class="btn btn-secondary" routerLink="/Fiches/couts" type="submit">Ajouter Coûts</button>
+        <div class="col-md-3" >
+          <button class="btn btn-secondary" (click)="addPrice()" type="submit">Ajouter Coûts</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 <br>
 <app-menu></app-menu>
 
@@ -18,7 +17,7 @@
                     <div class="form-group">
                       <label>Titre</label>
                       <input type="text"
-                             formControlName="title"
+                             formControlName="titleStep"
                              class="form-control"
                              placeholder="Titre"
                              required="required"
@@ -65,6 +64,22 @@
                           <option *ngFor="let ingredient of ingredients">{{ingredient.libelle}}</option>
                         </select>
                       </div>
+                      <div class="form-group col">
+                        <label>Quantité</label>
+                        <input type="number"
+                               formControlName="quantite"
+                               class="form-control"
+                               required="required"
+                               placeholder="Quantité de l'ingrédient"
+                               data-error="Quantité requise">
+                      </div>
+                      <div class="form-group col">
+                        <label>Unité</label>
+                        <select class="form-control" formControlName="unite">
+                          <option>Choisir une unité</option>
+                          <option *ngFor="let ingredient of ingredients">{{ingredient.unite}}</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
@@ -77,9 +92,7 @@
                     </button>
                   </div>
                   <div class="col-md-6">
-                    <button class="btn btn-success" type="submit" (click)="onSubmit()" >
-                      Fin
-                    </button>
+                    <button class="btn btn-success" type="submit" (click)="onSubmit()" >Fin</button>
                   </div>
                   </div>
                 </div>

@@ -1,20 +1,20 @@
 <app-menu></app-menu>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container">
+<div class="container" *ngIf="fiche!=null" >
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="row">
         <div class="col">
-          <div>Intitulé: Tarte aux fraises</div>
+          <div>Intitulé: {{fiche.title}}</div>
         </div>
         <div class="col">
-          <div>Responsable: Souhaila</div>
+          <div>Responsable: {{fiche.responsable}}</div>
         </div>
         <div class="col">
-          <div>Nombre de couverts: 2</div>
+          <div>Nombre de couverts: {{fiche.nbCouverts}}</div>
         </div>
       </div>
     </div>
@@ -23,10 +23,10 @@
         <div class="col">
           <div class="panel panel-info">
             <div class="panel-heading">Ingrédients</div>
-            <div class="panel-body">
-              <table class="table">
+            <div class="panel-body" *ngFor="let step of fiche.listeStep;">
+              <table class="table" >
                 <thead>
-                <tr>
+                <tr >
                   <th scope="col">Nom</th>
                   <th scope="col">Unité</th>
                   <th scope="col">Quantité</th>
@@ -37,9 +37,9 @@
                   <th scope="row">Element de base:</th>
                 </tr>
                 <tr>
-                  <th scope="row">Citron</th>
-                  <td>Kg</td>
-                  <td>3</td>
+                  <th scope="row">{{step.listIngredient.get('ingredient')}}</th>
+                  <td>{{step.listIngredient.get('unite')}}</td>
+                  <td>{{step.listIngredient.get('quantite')}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -49,19 +49,12 @@
         <div class="col">
           <div class="panel panel-info">
             <div class="panel-heading">Etapes</div>
-            <div class="panel-body">
+            <div class="panel-body" *ngFor="let step of fiche.listeStep">
               <div class="col">
                 <dl>
-                  <dt>Pate brisée</dt>
-                  <dd>Mélanger tous les ingrédients secs</dd>
-                  <dt>Crème citron</dt>
-                  <dd>Battre sur feu doux les oeufs avec le jus de citron.Il faut rajouter une petite cuillère de
-                    maizena pour l'épaississement
-                  </dd>
-                  <dt>Meringue</dt>
-                  <dd>Monter les blanc en neige avec sucre</dd>
-                  <dt>Pochage</dt>
-                  <dd>A l'aide d'une poche à douille, ....</dd>
+                  <dt>{{step.titleStep}}</dt>
+                  <dt>Durée: {{step.time}}</dt>
+                  <dd>{{step.description}}</dd>
                 </dl>
               </div>
             </div>
@@ -74,7 +67,7 @@
             <div class="panel-heading">Matériels Dressages</div>
             <div class="panel-body">
               <ol>
-                <li>None</li>
+                <li>{{fiche.materielDressage}}</li>
               </ol>
             </div>
           </div>
@@ -84,30 +77,18 @@
             <div class="panel-heading">Matériels spécifiques</div>
             <div class="panel-body">
               <ol>
-                <li>Poche à douille</li>
-                <li> Douilles</li>
+                <li>{{fiche.materielSpecifique}}</li>
               </ol>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
-          <button class="btn btn-primary" routerLink="/ListeRecettes/Fiches/Modification" type="submit">Modifier
-          </button>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-info" routerLink="#" type="submit">Imprimer</button>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-danger" routerLink="/ListeRecettes" type="submit">Supprimer</button>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-secondary" routerLink="/Fiches/couts" type="submit">Ajouter Coûts</button>
-        </div>
+        <h2>coût de production total: </h2>
+        <h2>coût de production par portion: </h2>
+        <h2>coût de production:</h2>
       </div>
     </div>
   </div>
 </div>
-
 
