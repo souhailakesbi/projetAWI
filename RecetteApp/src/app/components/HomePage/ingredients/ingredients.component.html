@@ -27,13 +27,36 @@
       <td>
         <span (click)="removeIngredients(ingredient)" class="btn btn-danger">Supprimer</span>&nbsp;
         <span [routerLink]="['/ModifierIngredient/',ingredient.id]" class="btn btn-primary">Modifier</span>
+        <input type="checkbox" (click)="addIngredient(ingredient)" class="btn btn-success" (change)="visible($event)">
+        <label>
+          <span *ngIf="marked">
+            <form [formGroup]="quantiteForm">
+            <div class="controls">
+              <div class="row">
+            <div class="form-group col">
+                        <label>Quantité</label>
+                        <input type="number"
+                               formControlName="quantite"
+                               class="form-control"
+                               required="required"
+                               placeholder="Quantité de l'ingrédient"
+                               data-error="Quantité requise">
+                      </div>
+                <button class="btn-success" (click)="addQuantite()">OK</button>
+                </div>
+            </div>
+              </form>
+          </span>
+          <span *ngIf="!marked">No ! </span>
+        </label>
       </td>
     </tr>
     </tbody>
   </table>
 
     <div class=" text-center  ">
-      <button class="btn btn-success" type="submit" routerLink="/AjouterIngredient" >Ajouter un ingrédient</button></div>
+      <button class="btn btn-success" type="submit" routerLink="/AjouterIngredient" >Ajouter un ingrédient</button>
+      <button class="btn btn-success" type="submit" routerLink="/ListeEtapes/{{this.id}}" >Fin</button></div>
 
 </div>
 

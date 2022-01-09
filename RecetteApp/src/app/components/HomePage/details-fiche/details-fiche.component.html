@@ -32,14 +32,14 @@
                   <th scope="col">Quantité</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let ingredient of step.listIngredient; ">
                 <tr>
                   <th scope="row">Element de base:</th>
                 </tr>
-                <tr>
-                  <th scope="row">{{step.listIngredient}}</th>
-                  <td>{{step.listIngredient.value}}</td>
-                  <td>{{step.listIngredient.value}}</td>
+                <tr *ngFor="let quant of step.listQuantite;">
+                  <th scope="row">{{ingredient.libelle}}</th>
+                  <td>{{ingredient.unite}}</td>
+                  <td>{{quant}}</td>
                 </tr>
                 </tbody>
               </table>

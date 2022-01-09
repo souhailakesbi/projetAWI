@@ -16,8 +16,8 @@
     </figcaption>
     <div class="bottom-wrap-payment">
       <figcaption class="info-wrap">
-        <div class="row" *ngFor="let step of fiche.listeStep">
-          <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true">{{step.listIngredient}}</a></div>
+        <div class="row" *ngFor="let step of fiche.listeStep;">
+          <div class="col-md-9 col-xs-9" *ngFor="let ingredient of step.listIngredient"> <a  class="title" data-abc="true" >{{ingredient.libelle}}</a></div>
         </div>
       </figcaption>
     </div>
