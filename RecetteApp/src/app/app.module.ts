@@ -36,18 +36,20 @@ const AppRoutes: Routes = [
   {path: 'AjouterEtape', canActivate:[AuthGuardService],component: CreerEtapeComponent},
   {path: 'Fiches/:id',canActivate:[AuthGuardService], component: ModificationEtapeComponent},
   {path: 'Modification/:id',canActivate:[AuthGuardService], component: ModificationFicheComponent},
-  {path: 'Fiches/couts', component: FichePrixComponent},
+  {path: 'Fiches/couts/:id',canActivate:[AuthGuardService], component: FichePrixComponent},
   {path: 'auth/Login', component: LoginComponent},
-  {path: 'Ingredients', component: IngredientsComponent},
-  {path: 'Stock', component: StockComponent},
-  {path: 'Etiquette', component: FicheEtiquetteComponent},
-  {path: 'Responsables', component: ResponsablesComponent},
-  {path: 'AjouterChef', component: AjouterChefComponent},
-  {path: 'AjouterIngredient', component: AjouterIngredientComponent},
-  {path: 'AjouterStock', component: AjoutStockComponent},
-  {path: 'ModifierStock/:id', component: ModificationStockComponent},
-  {path: 'ModifierIngredient/:id', component: ModifierIngredientComponent},
-  {path: 'ListeEtapes/:id', component: ListeStepComponent}
+  {path: 'Ingredients',canActivate:[AuthGuardService], component: IngredientsComponent},
+  {path: 'Stock',canActivate:[AuthGuardService], component: StockComponent},
+  {path: 'Etiquette',canActivate:[AuthGuardService], component: FicheEtiquetteComponent},
+  {path: 'Responsables',canActivate:[AuthGuardService], component: ResponsablesComponent},
+  {path: 'AjouterChef',canActivate:[AuthGuardService], component: AjouterChefComponent},
+  {path: 'AjouterIngredient',canActivate:[AuthGuardService], component: AjouterIngredientComponent},
+  {path: 'AjouterStock',canActivate:[AuthGuardService], component: AjoutStockComponent},
+  {path: 'ModifierIngredient/:id',canActivate:[AuthGuardService], component: ModifierIngredientComponent},
+  {path: 'ListeEtapes/:id',canActivate:[AuthGuardService], component: ListeStepComponent},
+  {path: 'ListeEtapes',canActivate:[AuthGuardService], component: ListeStepComponent},
+  {path: 'DetailsFiche/:id',canActivate:[AuthGuardService], component: DetailsFicheComponent}
+
 
 
 

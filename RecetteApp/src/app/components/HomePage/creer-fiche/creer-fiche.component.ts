@@ -38,13 +38,8 @@ export class CreerFicheComponent implements OnInit {
   }
 
   onSubmit(){
-
-    this.ficheService.create(this.ficheForm.value);
-    this.id = this.ficheForm.value.id;
-    console.log(this.id);
-    this.router.navigate(['ListeEtapes',this.id]);
-
-
+    this.ficheService.create(this.ficheForm.value)
+    console.log("Fiche sans étapes créée");
   }
 
   /*newFiche():void{

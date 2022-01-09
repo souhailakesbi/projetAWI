@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 
 import {StepServiceService} from "../../../services/step/step-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ListeStepComponent} from "../liste-step/liste-step.component";
 
 
 @Component({
@@ -12,8 +13,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ModificationEtapeComponent implements OnInit {
   public editStepForm!: FormGroup;
-  idStep: string| null;
+  idStep: string | null;
   stepRef:any;
+  listStep: ListeStepComponent | undefined;
 
   constructor(
     private stepService: StepServiceService,

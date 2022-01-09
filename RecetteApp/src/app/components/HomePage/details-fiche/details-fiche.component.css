@@ -30,3 +30,8 @@
   background-color: white;
 
 }
+@media print {
+  .doNotPrint{
+    display:none !important;
+  }
+}

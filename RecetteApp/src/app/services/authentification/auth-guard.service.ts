@@ -9,8 +9,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private  router: Router,
-  public auth: AngularFireAuth) { }
+  constructor(private  router: Router, public auth: AngularFireAuth) { }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean{
     return new Promise(
