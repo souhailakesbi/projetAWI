@@ -28,7 +28,7 @@ export class AjoutFicheService {
 
   }
 
-  updateListStep(id:string|null, listStep:Step[]){
+  updateListStep(id:string|null, listStep:Array<Step>){
     this.ficheRef.doc(id!).update({listeStep: listStep});
   }
 

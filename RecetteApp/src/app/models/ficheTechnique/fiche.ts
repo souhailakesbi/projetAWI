@@ -7,5 +7,5 @@ export default class Fiche {
   materielSpecifique?: string
   nbCouverts!: number;
   responsable!:string;
-  listeStep: Step[] = [];
+  listeStep!: Array<Step>;
 }

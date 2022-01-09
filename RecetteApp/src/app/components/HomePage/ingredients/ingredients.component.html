@@ -30,6 +30,9 @@
         <input type="checkbox" (click)="addIngredient(ingredient)" class="btn btn-success" (change)="visible($event)">
         <label>
           <span *ngIf="marked">
+            <form [formGroup]="quantiteForm">
+            <div class="controls">
+              <div class="row">
             <div class="form-group col">
                         <label>Quantité</label>
                         <input type="number"
@@ -39,6 +42,10 @@
                                placeholder="Quantité de l'ingrédient"
                                data-error="Quantité requise">
                       </div>
+                <button class="btn-success" (click)="addQuantite()">OK</button>
+                </div>
+            </div>
+              </form>
           </span>
           <span *ngIf="!marked">No ! </span>
         </label>

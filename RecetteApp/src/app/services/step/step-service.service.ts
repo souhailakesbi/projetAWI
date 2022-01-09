@@ -5,6 +5,9 @@ import {Step} from "../../models/step/step";
 import {Ingredients} from "../../models/ingredients";
 import {FormArray} from "@angular/forms";
 import {Router} from "@angular/router";
+import {QuantiteIngredient} from "../../models/quantite_ingredient/quantite-ingredient";
+import {Observable} from "rxjs";
+import Fiche from "../../models/ficheTechnique/fiche";
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +16,27 @@ export class StepServiceService {
   private listIngred: Ingredients[];
   private  dbPath = '/step'
   stepRef : AngularFirestoreCollection<Step>;
-
+  step!: Observable<Step>;
   constructor(private db: AngularFirestore, private router: Router) {
     this.stepRef = db.collection(this.dbPath);
     this.listIngred = [];
   }
 
   getStepDoc(id: string|null){
-    return this.db.collection('step').doc(id!).valueChanges();
+    // @ts-ignore
+    this.step =this.db.collection('step').doc(id!).valueChanges();
+    return this.step;
   }
 
   getStepList(){
     return this.db.collection('step').snapshotChanges();
   }
 
-  updateListIngredient(id: string | null, listIngredient: Ingredients[]){
-    this.stepRef.doc(id!).update({listIngredient:listIngredient})
+  updateListIngredient(id: string | null, listIngredient: Array<Ingredients>){
+    this.stepRef.doc(id!).update({listIngredient: listIngredient})
+  }
+  updateListQuantite(id: string | null, listQtite: Array<number>){
+    this.stepRef.doc(id!).update({listQuantite: listQtite})
   }
 
   getAll() : AngularFirestoreCollection<Step>{
@@ -48,7 +56,8 @@ export class StepServiceService {
     return this.db.collection('step').doc(id).update({
       titleStep: step.titleStep,
       description: step.description,
-      time:step.time
+      time:step.time,
+      listIngredient:step.listIngredient
     });
   }
 

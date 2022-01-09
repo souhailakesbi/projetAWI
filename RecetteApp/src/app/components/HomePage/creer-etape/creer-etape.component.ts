@@ -20,7 +20,7 @@ export class CreerEtapeComponent implements OnInit {
   public recipe: Fiche;
   public ingred! : Ingredients;
   public ingredients : Ingredients[]=[];
-  public listIngr : Array<Ingredients> = new Array<Ingredients>();
+  public listIngr : Array<Ingredients|number> = new Array<Ingredients|number>();
   private nameIngrd!: string;
 
   constructor(
@@ -51,7 +51,6 @@ export class CreerEtapeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.stepForm.get('listIngredient')?.value)
   }
   onSubmitStep(){
     this.stepService.create(this.stepForm.value);
@@ -62,20 +61,20 @@ export class CreerEtapeComponent implements OnInit {
     this.route.navigate(['/Fiches',  this.recipe.id]);
   }
 
-  createIngr(){
+  /*createIngr(){
     return this.formBuilder.group({
       ingredient:['',Validators.required],
       quantite:['',Validators.required],
       unite:['']
     })
-  }
+  }*/
 
 
   get listIngredient():FormArray{
     return this.stepForm.get('listIngredient') as FormArray;
   }
 
-  addInput(){
+  /*addInput(){
     this.listIngredient.push(this.createIngr());
     this.listIngredient.controls.forEach((ing,index) =>{
 
@@ -84,7 +83,7 @@ export class CreerEtapeComponent implements OnInit {
     console.log(this.stepForm.get('listIngredient')?.value);
     //this.nameIngrd = this.listIngredient.at(i).value.ingredient;
     //return this.nameIngrd;
-  }
+  }*/
 
 
 }
