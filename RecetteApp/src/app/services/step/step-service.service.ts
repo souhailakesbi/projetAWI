@@ -45,10 +45,10 @@ export class StepServiceService {
     return this.db.collection('step').snapshotChanges();
   }
 
-  updateListIngredient(id: string | null, listIngredient: Array<Ingredients>){
+  updateListIngredient(id: string | null, listIngredient: Ingredients[]){
     this.stepRef.doc(id!).update({listIngredient: listIngredient})
   }
-  updateListQuantite(id: string | null, listQtite: Array<number>){
+  updateListQuantite(id: string | null, listQtite: number[]){
     this.stepRef.doc(id!).update({listQuantite: listQtite})
   }
 
