@@ -48,22 +48,55 @@
                       </textarea>
                     </div>
                   </div>
-
                 <div class="row">
-                  <div class="form-group">
-                    <label>Ingrédients : </label>
-                    <br>
-                    <button type="button" (click)="addInput()">Ajouter</button>
+
+                  <div class="col-md-6">
+
+                    <div class="select" >
+                      <label>Ingredient </label>
+                      <select class="form-control" type=Ingredients  formControlName="ingredient_stock" >
+
+                        <option value="" >-----Choisir un ingredient-----</option>
+                        <option  *ngFor="let ingredient of ingredients"  [ngValue]="ingredient"   >{{ingredient.libelle}}</option>
+
+                      </select>
+
+
+                    </div>
+                  </div>
+                </div>
+                <!--
+                              <div class="row">
+                                <div class="form-group">
+                                  <label>Ingrédients : </label>
+                                  <br>
+
+                                  <button type="button" (click)="addInput()">Ajouter</button> changelent sou
                   </div>
                   <div formArrayName="listIngredient" *ngFor="let ingr of listIngredient.controls; let i =index;">
                     <div class="form-row" [formGroupName]="i" >
                       <div class="form-group col">
-                        <label>Ingredient</label>
-                        <select class="form-control" formControlName="ingredient">
-                          <option>Choisir un ingrédient</option>
-                          <option *ngFor="let ingredient of ingredients">{{ingredient.libelle}}</option>
-                        </select>
-                      </div>
+
+                    <label>Ingredient</label>
+                    <select class="form-control" formControlName="ingredient">
+                       <option>Choisir un ingrédient</option>
+                       <option *ngFor="let ingredient of ingredients">{{ingredient.libelle}}</option>
+                     </select>
+
+
+                   </div>
+
+                        <div class="select" >
+                          <label>Ingredient </label>
+                          <select class="form-control" type=Ingredients  formControlName="ingredient_stock" >
+
+                            <option value="" >-----Choisir un ingredient-----</option>
+                            <option  *ngFor="let ingredient of ingredients"  [ngValue]="ingredient">{{ingredient.libelle}}</option>
+
+                          </select>
+
+
+                        </div>
                       <div class="form-group col">
                         <label>Quantité</label>
                         <input type="number"
@@ -84,6 +117,7 @@
                   </div>
 
                 </div>
+                -->
                 <p></p>
                 <div class="row">
                   <div class="col-md-6">

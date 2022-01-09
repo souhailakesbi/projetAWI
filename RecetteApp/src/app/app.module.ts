@@ -33,7 +33,7 @@ const AppRoutes: Routes = [
   {path: '', redirectTo: 'auth/Login', pathMatch: 'full'},
   {path: 'ListeRecettes', canActivate:[AuthGuardService], component: RecetteListComponent},
   {path: 'AjouterRecette',canActivate:[AuthGuardService], component: CreerFicheComponent},
-  {path: 'AjouterEtape', canActivate:[AuthGuardService],component: CreerEtapeComponent},
+  {path: 'AjouterEtape/:id', canActivate:[AuthGuardService],component: CreerEtapeComponent},
   {path: 'Fiches/:id',canActivate:[AuthGuardService], component: ModificationEtapeComponent},
   {path: 'Modification/:id',canActivate:[AuthGuardService], component: ModificationFicheComponent},
   {path: 'Fiches/couts/:id',canActivate:[AuthGuardService], component: FichePrixComponent},

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IngredientsService } from '../../../services/ingredients.service';
 import { map } from 'rxjs/operators';
 import {Ingredients} from "../../../models/ingredients";
+import {CategorieIngredientService} from "../../../services/categorie/categorie-ingredient.service";
 @Component({
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
@@ -10,9 +11,10 @@ import {Ingredients} from "../../../models/ingredients";
 export class IngredientsComponent implements OnInit {
 
   Ingredients! : Ingredients[];
+  libelleCategorie!:string;
 
 
-  constructor(private ingredientService : IngredientsService) { }
+  constructor(private ingredientService : IngredientsService, private  categorieService : CategorieIngredientService) { }
   ngOnInit() {
     this.ingredientService.getIngredientList().subscribe(res =>{
       this.Ingredients = res.map(c => {
@@ -21,6 +23,7 @@ export class IngredientsComponent implements OnInit {
         } as Ingredients;
       })
     });
+
 
   }
 

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AjoutFicheService} from "../../../services/fiche/ajout-fiche.service";
 import {StepServiceService} from "../../../services/step/step-service.service";
-import {Route, Router} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {CreerFicheComponent} from "../creer-fiche/creer-fiche.component";
 import Fiche from "../../../models/ficheTechnique/fiche";
 import {Step} from "../../../models/step/step";
 import {Ingredients} from "../../../models/ingredients";
 import {IngredientsService} from "../../../services/ingredients.service";
+import {ListeStepComponent} from "../liste-step/liste-step.component";
 
 @Component({
   selector: 'app-creer-etape',
@@ -16,28 +17,34 @@ import {IngredientsService} from "../../../services/ingredients.service";
 })
 export class CreerEtapeComponent implements OnInit {
 
+
   public stepForm : FormGroup;
   public recipe: Fiche;
   public ingred! : Ingredients;
-  public ingredients : Ingredients[]=[];
-  public listIngr : Array<Ingredients> = new Array<Ingredients>();
-  private nameIngrd!: string;
+  public ingredients! : Ingredients[];
+  public listIngr : Ingredients[] = new Array<Ingredients>();
+  public listStep! : ListeStepComponent;
 
+  id : string |null;
   constructor(
     public stepService : StepServiceService,
     public formBuilder : FormBuilder,
     public route: Router,
-    public ingredientService : IngredientsService
+    private act : ActivatedRoute,
+    public ingredientService : IngredientsService,
+
   ) {
-    this.ingredientService.getIngredientList().subscribe(
+    this.stepService.getAllIngredient().subscribe(
       res =>{
-        this.ingredients = res.map(e=>{
-          return{
-            id:e.payload.doc.id,...e.payload.doc.data() as {}
-          } as Ingredients;
-        })
+        this.ingredients = res.map(e => {
+            return {
+              id: e.payload.doc.id, ...e.payload.doc.data() as {}
+            } as Ingredients;
+          }
+        )
       }
-    )
+    ); //changement souhaila
+    this.id = this.act.snapshot.paramMap.get('id');
     this.recipe = new Fiche();
     this.stepForm = this.formBuilder.group({
       titleStep: [''],
@@ -55,11 +62,14 @@ export class CreerEtapeComponent implements OnInit {
   }
   onSubmitStep(){
     this.stepService.create(this.stepForm.value);
-    this.route.navigate(['/ListeEtapes']);
+    //console.log(this.listStep.id)
+    console.log(this.recipe.id)
+    this.route.navigate(['/ListeEtapes',this.id]);
+
   }
   onSubmit(){
     this.stepService.create(this.stepForm.value);
-    this.route.navigate(['/Fiches',  this.recipe.id]);
+    this.route.navigate(['/Fiches',  this.id]);
   }
 
   createIngr(){

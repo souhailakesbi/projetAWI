@@ -34,28 +34,20 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div div class="form-group">
-                      <label>Catégorie</label>
 
+                    <div class="select" >
+                      <label>Categorie de l'ingredient </label>
+                      <select class="form-control" type=Categories  formControlName="categorie" >
 
-                      <!--  <select class="form-control" aria-label="Default select example" class="form-control"> -->
-                      <input type="text"
-                             formControlName="categorie"
-                             class="form-control"
-                             placeholder="categorie"
-                             required
-                             data-error="categorie is required.">
-                      <!--
-                      <option value="" selected disabled>--Seléctionner une catégorie--</option>
-                      <option value="Viandes">Viandes</option>
-                      <option value="Legumes">Legumes</option>
-                      <option value="Fruits">Fruits</option>
-                      <option value="Epices">Epices</option>
-                    </select>-->
+                        <option value="" >-----Choisir un ingredient-----</option>
+                        <option  *ngFor="let categorie of categories"  [ngValue]="categorie"   >{{categorie.libelleCategorieIngredient}}</option>
+
+                      </select>
 
 
                     </div>
                   </div>
+
 
                   <div class="col-md-6">
                     <div class="form-group">
