@@ -18,6 +18,9 @@ export class FichePrixComponent implements OnInit {
   @Input() fiche?:Fiche
   couts! : any;
   id : string | null;
+
+  coutsList! : Couts[];
+  //idCout : string |null;
   ingredientName! : string
   constructor(private ficheService: AjoutFicheService,
               private route : Router,
@@ -25,17 +28,26 @@ export class FichePrixComponent implements OnInit {
               private ingredientService:IngredientsService,
               private coutsService: CoutsService) {
     this.id = this.act.snapshot.paramMap.get('id');
+
   }
 
   ngOnInit(): void {
+    this.coutsService.getCoutList().subscribe(res =>{
+      this.coutsList = res.map(c => {
+        return{
+          idCout: c.payload.doc.id, ...c.payload.doc.data() as {}
+        } as Couts;
+      })
+    });
     this.ficheService.getFicheDoc(this.id).subscribe(fiche =>{
       console.log(fiche);
       this.fiche = fiche;
     });
-    this.coutsService.getCout("PTJG0sAHhTGgjjSjlFgw").subscribe(couts =>{
+    console.log(this.coutsList)
+    /*this.coutsService.getCout(this.coutsList.).subscribe(couts =>{
       console.log(couts);
       this.couts = couts;
-    });
+    });*/
   }
 
   caculerCoutProduction(){
@@ -43,15 +55,21 @@ export class FichePrixComponent implements OnInit {
     let duree=0;
 
     let coutProdu =0;
-    this.fiche?.listeStep.forEach(Step=> {
+    this.fiche!.listeStep.forEach(Step=> {
       for(var val in Step.listIngredient) {
         somme += Step.listIngredient[val].prix_unitaire * Step.listQuantite[val];
       }
       duree += Step.time;
     })
+
+    console.log(this.couts.coutHorairePersonnel);
+
     let chargePersoetFluide = this.couts.coutFluide+this.couts.coutHorairePersonnel*duree;
+
+    console.log(this.couts.coutHorairePersonnel);
     coutProdu = chargePersoetFluide + somme*1.05
     return coutProdu;
+    console.log(chargePersoetFluide);
   }
 
   caculerPrixdeVente(){
@@ -60,6 +78,7 @@ export class FichePrixComponent implements OnInit {
     let coutProdu=this.caculerCoutProduction();
     prixdevente =coefficiant *coutProdu;
     return prixdevente;
+    console.log(prixdevente);
   }
 
   caculerBenefice(){
@@ -67,6 +86,7 @@ export class FichePrixComponent implements OnInit {
     let coutProdu= this.caculerCoutProduction();
     let benefice  = prixdevente-coutProdu;
     return benefice;
+    console.log(benefice);
   }
 
   print(){

@@ -12,7 +12,7 @@ export class CoutsService {
   private  dbPath = '/couts'
   coutsRef : AngularFirestoreCollection<Couts>;
 
-  fiche!: Observable<Fiche>;
+  cout!: Observable<Couts>;
   constructor(private db: AngularFirestore,
               public router: Router) {
     this.coutsRef = db.collection(this.dbPath);
@@ -23,6 +23,11 @@ export class CoutsService {
   }
   getCout(idCout:string){
     return this.db.collection('couts').doc(idCout).snapshotChanges();
+  }
+
+  getAllDoc(){
+    const ref = this.db.collection('couts');
+    return ref.valueChanges({idField: 'idCout'});
   }
 
 
